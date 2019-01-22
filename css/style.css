@@ -1,29 +1,63 @@
-/* .chords{
-  width: 25%;
-  height: 60%;
-  background-color: #0000ff;
 
+#stage{
+border:4px solid rgba(37, 30, 56, 1);
+display: flex;
+flex-direction: column;
+position:absolute;
 }
 
-#chordBox {
-  display: flex;
- flex-direction: column;
-  flex-wrap: wrap;
-}
-
-.chords:nth-child(2n) {
-    flex-basis: 100%;
-} */
-/* General settings for the whole page */
 body {
   background-color: black;
   font-family: 'Montserrat', sans-serif;
-  display: none;
-  flex-direction: column;
+
 
   /* justify-content: center; */
   align-items: center;
   /* padding: 0.3rem; */
+}
+#loading{
+width:100%;
+height:100%;
+background-color: black;
+position:absolute;
+}
+
+#loadingMessage{
+  margin: 8rem;
+}
+/*
+#loadingMessage p{
+  margin: 2em;
+} */
+
+#loadingKeyboard{
+/* width:20%;
+height:15%; */
+width:10rem;
+height:30rem;
+position:absolute;
+/* border:1px solid black; */
+background-image: url(../img/key.svg);
+background-repeat: repeat-x;
+/* background-size:400%; */
+background-size:4rem;
+animation: MOVE-BG 10s infinite linear;
+
+top:20rem;
+	bottom: 0;
+	left: 0;
+	right: 0;
+
+	margin: auto;
+}
+
+@keyframes MOVE-BG {
+    from {
+        background-position: 0% 0%
+    }
+    to {
+        background-position:500% 0%
+    }
 }
 
 
@@ -60,16 +94,16 @@ p {
   /* text-transform: uppercase; */
 }
 
-/* #columns div div { */
+/* THIS IS THE STYLING FOR EACH BUTTON */
 .bg-square div div {
   /* background-color: #787582; */
-  border-radius: 0.3rem;
+  border-radius: 0.4rem;
   /* box-shadow: inset 0px 0px 10px 3px rgba(255, 255, 255, 0.3); */
   margin: auto;
   display: flex;
   margin: 0.3rem;
   width: 5rem;
-  height: 2rem;
+  height: 1.5rem;
   color: white;
   text-shadow: 0 0 10px #000000;
 }
@@ -137,8 +171,9 @@ p {
 
 #answerBox{
   width: 50%;
-  height: 1.5rem;
+  height: 1rem;
   /* text-align:center; */
+  /* display: flex; */
   /* margin: auto; */
 }
 
@@ -155,7 +190,7 @@ p {
 } */
 #columns {
   display: flex;
-  padding: 1rem;
+  padding: 0.2rem;
 }
 
 #columns>div {

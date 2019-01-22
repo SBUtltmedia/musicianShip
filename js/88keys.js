@@ -23,20 +23,39 @@ for (i = 0; i < 88; i++) {
 
 console.log(sprite)
 
+// prepares the Howler.js backend and shows a loading screen
+function makeHowl(){
 //  The goal is to have the sprite as an object for which the keys are the notes and the values are the numbers for the position of the sprite
 var sound = new Howl({
   autoplay: false,
-  src: ['samples/output500.wav'],
+  src: ['samples/output500.webm'],
   sprite: sprite
 
 });
 
+var loadingDiv = $("<div/>", {
+  id: "loading"
+}).append($("<div/>", {
+  id: "loadingKeyboard"
+}))
+
+var loadingMessage = $("<div/>", {
+  id: "loadingMessage"
+});
+loadingMessage.addClass("bg-square")
+loadingMessage.addClass("textbox")
+loadingMessage.append("<p>Loading...</p>")
+loadingMessage.append("<p>(please wait)</p>")
+loadingDiv.append(loadingMessage)
+
+$('#stage').append(loadingDiv);
 sound.on('load', function() {
-$('body').show(1000).css({"display":"flex"})
+loadingMessage.append("<p>Done!</p>")
+$('#loading').hide(200);
 
 });
 
-
+}
 function playChord(arr, duration = 1000, fadeDuration = 2000,callBack) {
 
 
