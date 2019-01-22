@@ -1,3 +1,4 @@
+var sound
 var spriteLength = 10000;
 
 var octave = ["A", "Bb", "B", "C", "Db", "D", "Eb", "E", "F", "Gb", "G", "Ab"]
@@ -21,12 +22,12 @@ for (i = 0; i < 88; i++) {
 
 }
 
-console.log(sprite)
+// console.log(sprite)
 
 // prepares the Howler.js backend and shows a loading screen
 function makeHowl(){
 //  The goal is to have the sprite as an object for which the keys are the notes and the values are the numbers for the position of the sprite
-var sound = new Howl({
+  sound = new Howl({
   autoplay: false,
   src: ['samples/output500.webm'],
   sprite: sprite

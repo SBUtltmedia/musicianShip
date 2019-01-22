@@ -1,51 +1,71 @@
 var Listener = {
   pages: {
     progressions: {
-      checkBtnEvent: function(evt, state) {
-        state.check = true
+      checkBtnEvent: function(evt) {
+        stateContainer.data.check = true
         //  console.log(this)
         $(evt.currentTarget).addClass("btnClicked")
-        console.log("state.check", state)
-        colorAnswerText(state)
-        $('#answerBox').html(state.AnswerText)
+        console.log("state.check", stateContainer)
+        colorAnswerText()
+        $('#answerBox').html(stateContainer.data.AnswerText)
       },
-      menuBtnEvent: function(evt, state) {
-        state.check = true
+      menuBtnEvent: function(evt) {
+        stateContainer.data.check = true
         //  console.log(this)
         $(evt.currentTarget).addClass("btnClicked")
         // also update the Answer box with a "dummy" previous answer, since the function requires an argument
-        console.log("state.check", state)
+        console.log("state.check", stateContainer)
       },
-      playBtnEvent: function(evt, state) {
+      playBtnEvent: function(evt) {
+        console.log(evt, stateContainer)
         $(evt.currentTarget).addClass("btnClicked")
-        playSelectedProgression(evt, state)
+        playSelectedProgression(evt)
       },
-      backBtnEvent: function(evt, state) {
+      backBtnEvent: function(evt) {
         $(evt.currentTarget).addClass("btnClicked")
-        loadMenuUI(state)
+        loadMenuUI()
       },
-      nextBtnEvent: function(evt, state) {
+      nextBtnEvent: function(evt) {
         $(evt.currentTarget).addClass("btnClicked")
         setTimeout(function() {
-          loadProgressionUnit(state.unit)
+          loadProgressionUnit(stateContainer.unit)
         }, 300);
       }
     },
     menu: {
-      unitBtnEvent: function(evt, state) {
+
+      // enable single prog button
+      progBtnEvent: function(evt) {
+      var unitNum= evt.currentTarget.id.split("_")[1]
+        console.log(evt)
         $(evt.currentTarget).addClass("btnClicked")
-        var unitNum = 7
-        loadProgressionUnit(unitNum)
+
+      loadProgressionUnit(unitNum)
       }
+
+      // // Enable all button functions
+      // for (var i = 0; i < 10; i++) {
+      //
+      // unitBtn7Event: function(evt, state) {
+      //   $(evt.currentTarget).addClass("btnClicked")
+      //   var unitNum = 7
+      //   loadProgressionUnit(unitNum)
+      // }
+
+    // }
+
     }
   },
   helperFunctions: {
-    addEventListeners: function(state, page) {
-      $('.button').each(function(index) {
-        $(this).on("click", function(evt) {
-          Listener.pages[page][this.id + "Event"](evt, state)
-        })
+    addEventListeners: function(page) {
+      // console.log(stateContainer)
+      $('.button').on("click",function(evt){
+
+      Listener["pages"][page][evt.currentTarget.id.split("_")[0]+"Event"](evt)
+
+
       })
+
     }
   }
 }

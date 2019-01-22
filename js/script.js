@@ -1,19 +1,21 @@
-// Q: why did we create this function?
+var stateContainer = {};
+
 $(function() {
-  var state = {};
-  // Define progression units
-  state.ProgressionUnits = [3, 4, 5, 6, 7]
+
   //  var unitNum = 7
   // loadProgressionUnit(unitNum)
 
   // Load the Menu UI
-  loadMenuUI(state)
-  makeHowl();
+  loadMenuUI()
+  makeHowl()
   resizeWindow()
+  // console.log("STATE_check", state)
 })
 
-function loadMenuUI(state) {
-  console.log(state)
+function loadMenuUI() {
+  // console.log(state)
+  // Define progression units
+  var ProgressionUnits = [3, 4, 5, 6, 7]
   // Make a clear screen
   clearStage();
   // create the title Section
@@ -35,24 +37,42 @@ function loadMenuUI(state) {
     id: "topMenu",
     class: "bg-square"
   });
-  var unitBtn = $("<div/>", {
-    id: "unitBtn",
-    class: "menuBtn button"
-  })
-  unitBtn.append("<p> Progression 7 </p>")
-  topMenu.append(unitBtn)
+
+  // create a dynamic menu of all units
+  for (var i = 0; i < ProgressionUnits.length; i++) {
+    var cur_unit = ProgressionUnits[i]
+    //Do something
+    var progBtn = $("<div/>", {
+      id: "progBtn_"+ cur_unit,
+      class: "menuBtn button"
+    })
+    // unitBtn.addClass("unitNumber"+cur_unit)
+    progBtn.append("<p> Progression " + cur_unit + " </p>")
+    topMenu.append(progBtn)
+  }
+
+// Non Dynamic menu of progressions
+  // var unitBtn = $("<div/>", {
+  //   id: "unitBtn",
+  //   class: "menuBtn button"
+  // })
+  // unitBtn.append("<p> Progression 7 </p>")
+  // topMenu.append(unitBtn)
+
   $('#stage').append([titleSection, topMenu])
 
   // enable event listeners
-  Listener.helperFunctions.addEventListeners(state, "menu");
+  Listener.helperFunctions.addEventListeners("menu");
 
 }
+
 function clearStage() {
 
   $('#stage').html("")
   $('#stage *').off()
 
 }
+
 function loadProgressionUnit(unitNum) {
   clearStage()
   loadUnit(unitNum)
@@ -61,9 +81,9 @@ function loadProgressionUnit(unitNum) {
     $.get(`data/prog-0${unitNum}.json`, loadData)
 
     function loadData(data) {
-      // options will be number of colors
-      state = data;
-      state.unit = unitNum;
+    stateContainer.data = data;
+      stateContainer.unit = unitNum;
+        // console.log("STATE_check", state)
       start();
     }
   }
@@ -76,24 +96,24 @@ function loadProgressionUnit(unitNum) {
     var progression = [];
     // pick a random Progression
     // this function generates the index for a random progression
-    state.progressionIndex = Math.floor(Math.random() * state.progressions.length);
+      stateContainer.data.progressionIndex = Math.floor(Math.random() * stateContainer.data.progressions.length);
     // prints selected prog chord
-    console.log("selected prog: ", state.progressions[state.progressionIndex].chords)
+    console.log("selected prog: ", stateContainer.data.progressions[stateContainer.data.progressionIndex].chords)
     // initialize user answer Array
-    state.storedAnswer = new Array(state.progressions[state.progressionIndex].chords.length).fill(" X")
+    stateContainer.data.storedAnswer = new Array(stateContainer.data.progressions[stateContainer.data.progressionIndex].chords.length).fill(" X")
     // fill the array storedAnswer with dummy elements "X"
     // for (var i = 0, l = state.progressions[state.progressionIndex].chords.length; i < (l-1); ++i) {
     // state.storedAnswer.push(" X")
     //   // console.log("pushing X")
     // }
-    console.log("state.storedAnswer: ", state.storedAnswer)
+    console.log("state.storedAnswer: ", stateContainer.data.storedAnswer)
     // Initialize check flag
     // The check flag determines whether the answer will be colored depending if it's correct or not.
-    state.check = false
+    stateContainer.data.check = false
 
     // make Progression Interface
-    makeProgressionUI(state)
-    Listener.helperFunctions.addEventListeners(state, "progressions");
+    makeProgressionUI()
+    Listener.helperFunctions.addEventListeners("progressions");
 
 
 
@@ -105,7 +125,7 @@ function loadProgressionUnit(unitNum) {
     $("#columns div div").addClass("btnReady")
     // When user clicks on a button (columns div div), call is correct)
     $('#columns div div').on("click", function(evt) {
-      state.clickeditem = [$(this).index(), $(this).parent().index()]
+      stateContainer.clickeditem = [$(this).index(), $(this).parent().index()]
       // Toggle highlight off from all other buttons in the column
       $('#columns div:nth-child(' + ($(this).parent().index() + 1) + ')' + 'div div').removeClass("btnClicked")
       // Highlight the button when click
@@ -114,10 +134,10 @@ function loadProgressionUnit(unitNum) {
       //WIP
       // update storedAnswer with column number as first number and chordSymbol as second argument
       var columnNumb = $(this).parent().index()
-      var chordSymb = state.options[$(this).index()]
+      var chordSymb = stateContainer.data.options[$(this).index()]
       updateAnswer(columnNumb, chordSymb)
       // Log message about answer being correct
-      console.log(state.clickeditem, isCorrect())
+      // console.log(stateContainer.data.clickeditem, isCorrect())
     })
 
     // function isCorrect() {
@@ -147,68 +167,68 @@ function loadProgressionUnit(unitNum) {
   // of the last chord symbol indicated by the user when clicking on an element of the column
   function updateAnswer(columnNumber, chordSymbol) {
     // substitute item at position "column" in an array, with item "chordSymbol"
-    state.storedAnswer[columnNumber] = chordSymbol
-    console.log("state.storedAnswer", state.storedAnswer)
-    if (state.check == false) {
-      var AnswerText = " " + state.storedAnswer[0]
-      for (var i = 0, l = state.storedAnswer.length; i < (l - 1); ++i) {
-        AnswerText = AnswerText + ", " + state.storedAnswer[i + 1]
+    stateContainer.data.storedAnswer[columnNumber] = chordSymbol
+    console.log("state.storedAnswer", stateContainer.data.storedAnswer)
+    if (stateContainer.data.check == false) {
+      var AnswerText = " " + stateContainer.data.storedAnswer[0]
+      for (var i = 0, l = stateContainer.data.storedAnswer.length; i < (l - 1); ++i) {
+        AnswerText = AnswerText + ", " + stateContainer.data.storedAnswer[i + 1]
         console.log("adding element to the anser")
       }
     }
-    if (state.check == true) {
+    if (stateContainer.data.check == true) {
       var color = '"red"'
-      if (state.progressions[state.progressionIndex].chords[0].symbol == state.storedAnswer[0]) {
+      if (stateContainer.data.progressions[stateContainer.data.progressionIndex].chords[0].symbol == stateContainer.data.storedAnswer[0]) {
         color = '"green"'
       }
-      var AnswerText = " <font color=" + color + ">" + state.storedAnswer[0] + "</font>"
-      for (var i = 1, l = state.storedAnswer.length; i < l; ++i) {
-        console.log("i", i)
-        console.log("progresson correct chord symbol", state.progressions[state.progressionIndex].chords[i].symbol)
-        console.log("stored answer", state.storedAnswer[i])
+      var AnswerText = " <font color=" + color + ">" + stateContainer.data.storedAnswer[0] + "</font>"
+      for (var i = 1, l = stateContainer.data.storedAnswer.length; i < l; ++i) {
+        // console.log("i", i)
+        // console.log("progresson correct chord symbol", stateContainer.data.progressions[state.progressionIndex].chords[i].symbol)
+        console.log("stored answer", stateContainer.data.storedAnswer[i])
         // check that the answer is correct, in that case changes the color to green
         // keeps into account that "A6" counts as "It6,Fr6,Ger6"
-        var correctSym = state.progressions[state.progressionIndex].chords[i].symbol
-        if ((correctSym == state.storedAnswer[i]) || ((state.storedAnswer[i] == "A6" && ((correctSym == "It6") || (correctSym == "Fr6") || (correctSym == "Ger6"))))) {
+        var correctSym = stateContainer.data.progressions[stateContainer.data.progressionIndex].chords[i].symbol
+        if ((correctSym == stateContainer.data.storedAnswer[i]) || ((stateContainer.data.storedAnswer[i] == "A6" && ((correctSym == "It6") || (correctSym == "Fr6") || (correctSym == "Ger6"))))) {
           color = '"green"'
           // otherwise color is set to red
         } else {
           color = '"red"'
         }
-        AnswerText = AnswerText + ", &nbsp;" + " <font color=" + color + "> " + state.storedAnswer[i] + "</font>"
+        AnswerText = AnswerText + ", &nbsp;" + " <font color=" + color + "> " + stateContainer.data.storedAnswer[i] + "</font>"
         console.log("Answer Text", AnswerText)
         // WIP
       }
     }
     // do we need this?
-    state.AnswerText = AnswerText
-    $('#answerBox').html(state.AnswerText)
+    stateContainer.data.AnswerText = AnswerText
+    $('#answerBox').html(stateContainer.data.AnswerText)
   }
 
   function colorAnswerText(state) {
     var color = '"red"'
-    if (state.progressions[state.progressionIndex].chords[0].symbol == state.storedAnswer[0]) {
+    if (stateContainer.data.progressions[state.progressionIndex].chords[0].symbol == stateContainer.data.storedAnswer[0]) {
       color = '"green"'
     }
-    var AnswerText = " <font color=" + color + ">" + state.storedAnswer[0] + "</font>"
-    for (var i = 1, l = state.storedAnswer.length; i < l; ++i) {
+    var AnswerText = " <font color=" + color + ">" + stateContainer.data.storedAnswer[0] + "</font>"
+    for (var i = 1, l = stateContainer.data.storedAnswer.length; i < l; ++i) {
       console.log("i", i)
-      console.log("progresson correct chord symbol", state.progressions[state.progressionIndex].chords[i].symbol)
-      console.log("stored answer", state.storedAnswer[i])
+      console.log("progresson correct chord symbol", stateContainer.data.progressions[state.progressionIndex].chords[i].symbol)
+      console.log("stored answer", stateContainer.data.storedAnswer[i])
       // check that the answer is correct, in that case changes the color to green
       // keeps into account that "A6" counts as "It6,Fr6,Ger6"
-      var correctSym = state.progressions[state.progressionIndex].chords[i].symbol
-      if ((correctSym == state.storedAnswer[i]) || ((state.storedAnswer[i] == "A6" && ((correctSym == "It6") || (correctSym == "Fr6") || (correctSym == "Ger6"))))) {
+      var correctSym = stateContainer.data.progressions[state.progressionIndex].chords[i].symbol
+      if ((correctSym == stateContainer.data.storedAnswer[i]) || ((stateContainer.data.storedAnswer[i] == "A6" && ((correctSym == "It6") || (correctSym == "Fr6") || (correctSym == "Ger6"))))) {
         color = '"green"'
         // otherwise color is set to red
       } else {
         color = '"red"'
       }
-      AnswerText = AnswerText + ", &nbsp;" + " <font color=" + color + "> " + state.storedAnswer[i] + "</font>"
+      AnswerText = AnswerText + ", &nbsp;" + " <font color=" + color + "> " + stateContainer.data.storedAnswer[i] + "</font>"
       console.log("Answer Text", AnswerText)
       // WIP
     }
-    state.AnswerText = AnswerText
+    stateContainer.data.AnswerText = AnswerText
   }
 
 
@@ -220,28 +240,28 @@ function loadProgressionUnit(unitNum) {
 
 
 // This works but it shouln'd be scoped like that
-function colorAnswerText(state) {
+function colorAnswerText() {
   var color = '"red"'
-  if (state.progressions[state.progressionIndex].chords[0].symbol == state.storedAnswer[0]) {
+  if (stateContainer.data.progressions[stateContainer.data.progressionIndex].chords[0].symbol == stateContainer.data.storedAnswer[0]) {
     color = '"green"'
   }
-  var AnswerText = " <font color=" + color + ">" + state.storedAnswer[0] + "</font>"
-  for (var i = 1, l = state.storedAnswer.length; i < l; ++i) {
+  var AnswerText = " <font color=" + color + ">" + stateContainer.data.storedAnswer[0] + "</font>"
+  for (var i = 1, l = stateContainer.data.storedAnswer.length; i < l; ++i) {
     console.log("i", i)
-    console.log("progresson correct chord symbol", state.progressions[state.progressionIndex].chords[i].symbol)
-    console.log("stored answer", state.storedAnswer[i])
+    // console.log("progresson correct chord symbol", stateContainer.data.progressions[state.progressionIndex].chords[i].symbol)
+    console.log("stored answer", stateContainer.data.storedAnswer[i])
     // check that the answer is correct, in that case changes the color to green
     // keeps into account that "A6" counts as "It6,Fr6,Ger6"
-    var correctSym = state.progressions[state.progressionIndex].chords[i].symbol
-    if ((correctSym == state.storedAnswer[i]) || ((state.storedAnswer[i] == "A6" && ((correctSym == "It6") || (correctSym == "Fr6") || (correctSym == "Ger6"))))) {
+    var correctSym = stateContainer.data.progressions[stateContainer.data.progressionIndex].chords[i].symbol
+    if ((correctSym == stateContainer.data.storedAnswer[i]) || ((stateContainer.data.storedAnswer[i] == "A6" && ((correctSym == "It6") || (correctSym == "Fr6") || (correctSym == "Ger6"))))) {
       color = '"green"'
       // otherwise color is set to red
     } else {
       color = '"red"'
     }
-    AnswerText = AnswerText + ", &nbsp;" + " <font color=" + color + "> " + state.storedAnswer[i] + "</font>"
+    AnswerText = AnswerText + ", &nbsp;" + " <font color=" + color + "> " + stateContainer.data.storedAnswer[i] + "</font>"
     console.log("Answer Text", AnswerText)
     // WIP
   }
-  state.AnswerText = AnswerText
+  stateContainer.data.AnswerText = AnswerText
 }
