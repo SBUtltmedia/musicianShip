@@ -94,6 +94,21 @@ p {
   /* text-transform: uppercase; */
 }
 
+.bigTitle {
+  display: flex;
+  /* flex-direction: column; */
+  background-color: #251e38;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  margin: 1rem;
+  box-shadow: inset 0px 0px 8px 2px rgba(0, 0, 0, 0.9);
+  color: white;
+  justify-content: center;
+  font-size: 2rem;
+  /* text-transform: uppercase; */
+}
+
+
 /* THIS IS THE STYLING FOR EACH BUTTON */
 .bg-square div div {
   /* background-color: #787582; */

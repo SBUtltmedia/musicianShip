@@ -20,23 +20,39 @@ function loadMenuUI() {
   clearStage();
   // create the title Section
   var titleSection = $("<div/>", {
-    id: "backBtn"
+    id: "MainMenuTitle"
   });
   titleSection.addClass("bg-square")
   // create the title box
-  var title = $("<div/>", {
-    id: "title"
+  var menuTitle = $("<div/>", {
+    id: "menuTitle",
+    class: "bigTitle"
   });
-  title.addClass("bg-square")
-  title.addClass("textbox")
-  title.append("<p>Mus 505 Web App</p>")
-  title.append("<p> Select the exercise and unit</p>")
-  titleSection.append(title)
-  // create the top menu section
-  var topMenu = $("<div/>", {
-    id: "topMenu",
+  // menuTitle.addClass("bg-square")
+  menuTitle.addClass("textbox")
+  menuTitle.append("<p>Mus 505 Web App</p>")
+  titleSection.append(menuTitle)
+  // description
+  var menuDesc = $("<div/>", {
+    id: "menuDesc"
+  });
+  menuDesc.addClass("bg-square")
+  menuDesc.addClass("textbox")
+  menuDesc.append("<p> Select the exercise and unit</p>")
+  titleSection.append(menuDesc)
+  // create the progressions section
+  var progMenu = $("<div/>", {
+    id: "progMenu",
     class: "bg-square"
   });
+  // create the title box
+  var progTitle = $("<div/>", {
+    id: "progTitle"
+  });
+  progTitle.addClass("bg-square")
+  progTitle.addClass("textbox")
+  progTitle.append("<p>Progressions Units</p>")
+  progMenu.append(progTitle)
 
   // create a dynamic menu of all units
   for (var i = 0; i < ProgressionUnits.length; i++) {
@@ -47,8 +63,8 @@ function loadMenuUI() {
       class: "menuBtn button"
     })
     // unitBtn.addClass("unitNumber"+cur_unit)
-    progBtn.append("<p> Progression " + cur_unit + " </p>")
-    topMenu.append(progBtn)
+    progBtn.append("<p> UNIT " + cur_unit + " </p>")
+    progMenu.append(progBtn)
   }
 
 // Non Dynamic menu of progressions
@@ -59,7 +75,7 @@ function loadMenuUI() {
   // unitBtn.append("<p> Progression 7 </p>")
   // topMenu.append(unitBtn)
 
-  $('#stage').append([titleSection, topMenu])
+  $('#stage').append([titleSection, progMenu])
 
   // enable event listeners
   Listener.helperFunctions.addEventListeners("menu");
