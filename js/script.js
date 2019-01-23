@@ -15,7 +15,32 @@ $(function() {
 function loadMenuUI() {
   // console.log(state)
   // Define progression units
-  var ProgressionUnits = [3, 4, 5, 6, 7]
+  var ProgressionUnits = [
+    {
+      "unit_nb": 2,
+    "desc": 'Using I, i, ii6, N6, iv, ,IV, I6/4, i6/4, V'
+  },
+    {
+      "unit_nb": 3,
+    "desc": "Adding V7"
+  },
+    {
+      "unit_nb": 4,
+    "desc": "Adding I6, i6 and VI"
+  },
+    {
+      "unit_nb": 5,
+    "desc": "Adding V6/4, V4/3, V4/2, V6 and V6/5"
+  },
+    {
+      "unit_nb": 6,
+    "desc": "Adding augmented chords, A6 (Fr6, It6, Ger6)"
+  },
+  {
+    "unit_nb": 7,
+  "desc": "Using VI during progressions"
+}
+]
   // Make a clear screen
   clearStage();
   // create the title Section
@@ -56,14 +81,15 @@ function loadMenuUI() {
 
   // create a dynamic menu of all units
   for (var i = 0; i < ProgressionUnits.length; i++) {
-    var cur_unit = ProgressionUnits[i]
+    var cur_unit = ProgressionUnits[i].unit_nb
+    var cur_unit_desc = ProgressionUnits[i].desc
     //Do something
     var progBtn = $("<div/>", {
       id: "progBtn_"+ cur_unit,
-      class: "menuBtn button"
+      class: "progBtn button"
     })
     // unitBtn.addClass("unitNumber"+cur_unit)
-    progBtn.append("<p> UNIT " + cur_unit + " </p>")
+    progBtn.append("<p> UNIT " + cur_unit + ": <em> " + cur_unit_desc + "</em> </p>")
     progMenu.append(progBtn)
   }
 

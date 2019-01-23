@@ -1,5 +1,5 @@
 {
-    "options": ["I", "i", "IV", "ii6", "N6", "iv", "I6/4", "i6/4", "V", "V7"],
+    "options": ["I", "i", "ii6", "N6", "iv", "IV", "I6/4", "i6/4", "V", "V7"],
     "progressions": [{
         "key": "G",
         "chords": [{

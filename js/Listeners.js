@@ -34,7 +34,7 @@ var Listener = {
     },
     menu: {
 
-      // enable single prog button
+      // dynamically load all progression units buttin
       progBtnEvent: function(evt) {
       var unitNum= evt.currentTarget.id.split("_")[1]
         console.log(evt)
