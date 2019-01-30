@@ -1,9 +1,11 @@
 
 #stage{
-border:4px solid rgba(37, 30, 56, 1);
+border:8px solid rgba(37, 30, 56, 1);
+border-radius: 12px;
 display: flex;
 flex-direction: column;
 position:absolute;
+align-items: center;
 }
 
 body {
@@ -11,7 +13,7 @@ body {
   font-family: 'Montserrat', sans-serif;
 
 
-  /* justify-content: center; */
+  justify-content: center;
   align-items: center;
   /* padding: 0.3rem; */
 }
@@ -94,6 +96,21 @@ p {
   /* text-transform: uppercase; */
 }
 
+.bigTitle {
+  display: flex;
+  /* flex-direction: column; */
+  background-color: #251e38;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  margin: 1rem;
+  box-shadow: inset 0px 0px 8px 2px rgba(0, 0, 0, 0.9);
+  color: white;
+  justify-content: center;
+  font-size: 2rem;
+  /* text-transform: uppercase; */
+}
+
+
 /* THIS IS THE STYLING FOR EACH BUTTON */
 .bg-square div div {
   /* background-color: #787582; */
@@ -107,6 +124,9 @@ p {
   color: white;
   text-shadow: 0 0 10px #000000;
 }
+
+
+
 .menuBtn{
   display: flex;
   background-color: rgba(149,145,153,0.5);
@@ -117,6 +137,18 @@ p {
   text-transform: uppercase;
   border-radius: 0.3rem;
 }
+
+.progBtn{
+  display: flex;
+  background-color: rgba(149,145,153,0.3);
+  /* background-color: rgba(255,255,255,0.2); */
+  /* background-color: rgba(1,1,1,0.9); */
+  padding: 0.5rem;
+  margin: 0.16rem;
+  /* text-transform: uppercase; */
+  border-radius: 0.3rem;
+}
+
 
 .btnReady {
   /* WAS:
@@ -170,11 +202,11 @@ p {
 }
 
 #answerBox{
-  width: 50%;
-  height: 1rem;
+  width: 40%;
+  height: 1.5rem;
   /* text-align:center; */
   /* display: flex; */
-  /* margin: auto; */
+  /* align-items: center; */
 }
 
 /* #answerBox p{ */
@@ -193,6 +225,15 @@ p {
   padding: 0.2rem;
 }
 
-#columns>div {
+/* #columns>div {
   flex: 1;
+} */
+
+#progMenu{
+    display: flex;
+    flex-direction: column;
 }
+
+/* #progMenu>div {
+  flex: 1;
+} */

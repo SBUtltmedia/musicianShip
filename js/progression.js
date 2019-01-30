@@ -1,4 +1,7 @@
-function makeProgressionUI(state) {
+function makeProgressionUI() {
+  // SOUNDTEST
+  // var testarr= ["5C"]
+  // playChord(testarr)
 
   var titleSection = $("<div/>", {
     id: "backBtn"
@@ -17,7 +20,7 @@ function makeProgressionUI(state) {
   });
   title.addClass("bg-square")
   title.addClass("textbox")
-  title.append("<p>Harmonic Progression - Unit " + state.unit + "</p>")
+  title.append("<p>Harmonic Progression - Unit " + stateContainer.unit + "</p>")
   title.append("<p> Select the correct harmonic progression</p>")
   titleSection.append(title)
   // create the top menu section
@@ -61,8 +64,8 @@ function makeProgressionUI(state) {
   });
   columns.addClass("bg-square")
   //var column=createOptions(state.options)
-  for (i of state.progressions[state.progressionIndex].chords) {
-    columns.append(createOptions(state.options))
+  for (i of stateContainer.data.progressions[stateContainer.data.progressionIndex].chords) {
+    columns.append(createOptions(stateContainer.data.options))
   }
 
 
@@ -89,15 +92,15 @@ function createOptions(options) {
 
 
 // Play Progression when you click play
-function playSelectedProgression(evt, state) {
+function playSelectedProgression(evt) {
   // Highlight the PLAY button when click
   $(this).addClass("btnClicked")
   // Log the progresson to be played
-  console.log("state.progressions[state.progressionIndex].chords", state.progressions[state.progressionIndex].chords)
+  console.log("stateContainer.data.progressions[stateContainer.data.progressionIndex].chords", stateContainer.data.progressions[stateContainer.data.progressionIndex].chords)
   // Define the array of the progression
   var RandProgChordsArray = []
   // Build the array of chords taking them from the state function
-  for (var i of state.progressions[state.progressionIndex].chords) {
+  for (var i of stateContainer.data.progressions[stateContainer.data.progressionIndex].chords) {
     // log each chord
     // console.log("i.notes", i.notes)
     // Push chords from state to RandProgChordsArray
