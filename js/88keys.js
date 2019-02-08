@@ -37,6 +37,7 @@ function makeHowl() {
   sound = new Howl({
     autoplay: false,
     src: ['samples/output500.webm', 'samples/output500.mp3'],
+    // src: ['samples/output500.mp3'],
     sprite: sprite
 
   });
@@ -67,18 +68,32 @@ function makeHowl() {
 
 }
 
-function playChord(arr, duration = 1000, fadeDuration = 2000, callBack) {
+function playChord(arr, duration = 1000,bassBoost=false, fadeDuration = 2000) {
 
 
-  for (i of arr) {
+  for (i in arr) {
 
-    var mySound = i
-    if (typeof i == 'number') {
-      var mySound = keyArray[i]
+    var mySound = arr[i]
+    if (typeof arr[i] == 'number') {
+      var mySound = keyArray[arr[i]]
+    }
+    sound.play(mySound)
 
+    // Add Bass bassBoost
+
+    // Old Method
+    // if(i==0 && bassBoost=2){
+    // sound.play(mySound)
+    // }
+
+    // New Method
+
+    // WIP
+    if(i==0 && bassBoost==true){
+    sound.play(mySound)
     }
 
-    var soundId = sound.play(mySound)
+
     // volume is reduced to 0.1 since piling up different sounds produces distortion
     sound.fade(0.1, 0, fadeDuration);
 

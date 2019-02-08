@@ -1,7 +1,9 @@
 function makeProgressionUI() {
   // SOUNDTEST
-  // var testarr= ["5C"]
-  // playChord(testarr)
+   // var testarr= ["5D","5Db"]
+   // Initialize bass status
+   stateContainer.enhanceBass = false
+   // playChord(testarr)
 
   var titleSection = $("<div/>", {
     id: "backBtn"
@@ -29,6 +31,13 @@ function makeProgressionUI() {
     class: "bg-square"
   });
   //topMenu.addClass("bg-square")
+  // create bass btn
+  var bassBtn = $("<div/>", {
+    id: "bassBtn",
+    class: "menuBtn button"
+  })
+  bassBtn.append("<p> Enhance Bass </p>")
+  topMenu.append(bassBtn)
   // create play btn
   var playBtn = $("<div/>", {
     id: "playBtn",
@@ -114,7 +123,7 @@ function playSelectedProgression(evt) {
 }
 
 // Play a progression of chords and highlight the correspondant column
-function playProgressionAndHighlightColumn(arrayOfChords, durationOfEachChord = 1000, IntervalBetweenChords = 100) {
+function playProgressionAndHighlightColumn(arrayOfChords, durationOfEachChord = 1000, bassBoost = stateContainer.enhanceBass, IntervalBetweenChords = 100) {
   var dfd = $.Deferred();
 
   function iterate(chordNum) {
@@ -123,7 +132,7 @@ function playProgressionAndHighlightColumn(arrayOfChords, durationOfEachChord = 
     // Highlight the column indexed with number chordNum + 1
     $('#columns div:nth-child(' + (chordNum + 1) + ')' + 'div div').addClass("btnHighlighted")
     // Play the Chord corresponding to the column
-    playChord(arrayOfChords[chordNum], durationOfEachChord).once("fade", function() {
+    playChord(arrayOfChords[chordNum], durationOfEachChord,bassBoost).once("fade", function() {
         if (chordNum < arrayOfChords.length - 1) {
           iterate(chordNum + 1)
         } else {

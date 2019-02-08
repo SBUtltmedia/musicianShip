@@ -16,6 +16,18 @@ var Listener = {
         // also update the Answer box with a "dummy" previous answer, since the function requires an argument
         console.log("state.check", stateContainer)
       },
+      bassBtnEvent: function(evt) {
+        if (stateContainer.enhanceBass == true) {
+          console.log("removeClass")
+          $(evt.currentTarget).removeClass("btnClicked")
+          stateContainer.enhanceBass = false
+        }
+        else {
+          $(evt.currentTarget).addClass("btnClicked")
+          console.log("addClass")
+          stateContainer.enhanceBass = true
+        }
+      },
       playBtnEvent: function(evt) {
         console.log(evt, stateContainer)
         $(evt.currentTarget).addClass("btnClicked")
@@ -37,11 +49,11 @@ var Listener = {
 
       // dynamically load all progression units buttin
       progBtnEvent: function(evt) {
-      var unitNum= evt.currentTarget.id.split("_")[1]
+        var unitNum = evt.currentTarget.id.split("_")[1]
         console.log(evt)
         $(evt.currentTarget).addClass("btnClicked")
 
-      loadProgressionUnit(unitNum)
+        loadProgressionUnit(unitNum)
       }
 
       // // Enable all button functions
@@ -53,16 +65,16 @@ var Listener = {
       //   loadProgressionUnit(unitNum)
       // }
 
-    // }
+      // }
 
     }
   },
   helperFunctions: {
     addEventListeners: function(page) {
       // console.log(stateContainer)
-      $('.button').on("click",function(evt){
+      $('.button').on("click", function(evt) {
 
-      Listener["pages"][page][evt.currentTarget.id.split("_")[0]+"Event"](evt)
+        Listener["pages"][page][evt.currentTarget.id.split("_")[0] + "Event"](evt)
 
 
       })
