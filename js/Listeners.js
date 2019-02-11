@@ -17,22 +17,26 @@ var Listener = {
         console.log("state.check", stateContainer)
       },
       bassBtnEvent: function(evt) {
-        if (stateContainer.enhanceBass == true) {
-          console.log("removeClass")
-          $(evt.currentTarget).removeClass("btnClicked")
-          stateContainer.enhanceBass = false
-        }
-        else {
-          $(evt.currentTarget).addClass("btnClicked")
-          console.log("addClass")
-          stateContainer.enhanceBass = true
-        }
+          stateContainer.enhanceBass= !stateContainer.enhanceBass;
+          $(evt.currentTarget).toggleClass("btnClicked")
+
+        // if (stateContainer.enhanceBass == true) {
+        //   console.log("removeClass")
+        //   $(evt.currentTarget).removeClass("btnClicked")
+        //   stateContainer.enhanceBass = false
+        // }
+        // else {
+        //   $(evt.currentTarget).addClass("btnClicked")
+        //   console.log("addClass")
+        //   stateContainer.enhanceBass = true
+        // }
       },
       playBtnEvent: function(evt) {
-        console.log(evt, stateContainer)
-        $(evt.currentTarget).addClass("btnClicked")
-        stopAllSound()
-        playSelectedProgression(evt)
+        // console.log(evt, stateContainer)
+        $(evt.currentTarget).toggleClass("btnClicked")
+        return (this.tog = !this.tog) ? playSelectedProgression(evt) : stopAllSound();
+        // stopAllSound()
+        // playSelectedProgression(evt)
       },
       backBtnEvent: function(evt) {
         $(evt.currentTarget).addClass("btnClicked")

@@ -126,6 +126,9 @@ function playSelectedProgression(evt) {
 function playProgressionAndHighlightColumn(arrayOfChords, durationOfEachChord = 1000, bassBoost = stateContainer.enhanceBass, IntervalBetweenChords = 100) {
   var dfd = $.Deferred();
 
+  // initialize StopPlayback flag
+  stateContainer.stopPlayback = false
+
   function iterate(chordNum) {
     // Remove highlight from all columns
     $('#columns div div').removeClass("btnHighlighted")
@@ -133,7 +136,7 @@ function playProgressionAndHighlightColumn(arrayOfChords, durationOfEachChord = 
     $('#columns div:nth-child(' + (chordNum + 1) + ')' + 'div div').addClass("btnHighlighted")
     // Play the Chord corresponding to the column
     playChord(arrayOfChords[chordNum], durationOfEachChord,bassBoost).once("fade", function() {
-        if (chordNum < arrayOfChords.length - 1) {
+        if ((chordNum < arrayOfChords.length - 1) && (stateContainer.stopPlayback == false)) {
           iterate(chordNum + 1)
         } else {
 
@@ -141,9 +144,12 @@ function playProgressionAndHighlightColumn(arrayOfChords, durationOfEachChord = 
 
         }
       }
-
+      // // Remove highlight from all columns
+      // $('#columns div div').removeClass("btnHighlighted")
+      // What is this parenthesis for?? If I removed everything breaks
     )
   }
   iterate(0)
   return dfd.promise();
+
 }

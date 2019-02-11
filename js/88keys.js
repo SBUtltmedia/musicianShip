@@ -102,8 +102,12 @@ function playChord(arr, duration = 1000,bassBoost=false, fadeDuration = 2000) {
   return sound;
 }
 
+//MOVE THIS FUCNTION TO PROGRESSION!!!
 function stopAllSound() {
   sound.stop()
+  stateContainer.stopPlayback = true
+  // Remove highlight from all columns
+  $('#columns div div').removeClass("btnHighlighted")
   // Object.keys(howlerList).forEach(function(key) {
   //   howlerList[key].stop();
   // });
