@@ -3,6 +3,8 @@ function makeProgressionUI() {
    // var testarr= ["5D","5Db"]
    // Initialize bass status
    stateContainer.enhanceBass = false
+   // Initialize playing status
+   stateContainer.playing = false
    // playChord(testarr)
 
   var titleSection = $("<div/>", {
@@ -118,7 +120,12 @@ function playSelectedProgression(evt) {
   // Play the progression and highlight the column
   playProgressionAndHighlightColumn(RandProgChordsArray).then(
     function() {
-      console.log("Done!")
+      // Remove highlight from all columns
+      $('#columns div div').removeClass("btnHighlighted")
+      // untoggle play progression
+    $("#playBtn").removeClass("btnClicked")
+      stateContainer.playing = false
+      console.log("Progression Played")
     })
 }
 

@@ -234,6 +234,13 @@ p {
     flex-direction: column;
 }
 
+#triadMenu{
+    display: flex;
+    flex-direction: column;
+}
+
+
+
 /* #progMenu>div {
   flex: 1;
 } */

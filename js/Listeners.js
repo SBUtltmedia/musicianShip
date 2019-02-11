@@ -33,10 +33,23 @@ var Listener = {
       },
       playBtnEvent: function(evt) {
         // console.log(evt, stateContainer)
-        $(evt.currentTarget).toggleClass("btnClicked")
-        return (this.tog = !this.tog) ? playSelectedProgression(evt) : stopAllSound();
+        // $(evt.currentTarget).toggleClass("btnClicked")
+        // return (this.tog = !this.tog) ? playSelectedProgression(evt) : stopAllSound();
         // stopAllSound()
         // playSelectedProgression(evt)
+        if (stateContainer.playing == true) {
+          // console.log("removeClass")
+                stopAllSound()
+          $(evt.currentTarget).removeClass("btnClicked")
+          stateContainer.playing = false
+        }
+        else {
+                  playSelectedProgression(evt)
+          $(evt.currentTarget).addClass("btnClicked")
+          // console.log("addClass")
+          stateContainer.playing = true
+        }
+
       },
       backBtnEvent: function(evt) {
         $(evt.currentTarget).addClass("btnClicked")
