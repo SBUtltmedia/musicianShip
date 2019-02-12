@@ -60,11 +60,11 @@ function loadMenuUI() {
     },
     {
       "unit_nb": 5,
-      "desc": "Adding d6" 
+      "desc": "Adding d6"
     },
     {
       "unit_nb": 6,
-      "desc": "Using VI during progressions"
+      "desc": "Sevenths: MM7,mm7,Mm7,mM7"
     }
   ]
   // Make a clear screen
@@ -176,8 +176,18 @@ function loadProgressionUnit(unitNum) {
   loadUnit(unitNum)
 
   function loadUnit(unitNum) {
+
+    // $.get(`data/prog-0${unitNum}.json`, loadData)
+
+  // FOR REGULAR PROGRESSIONS
+
+    if (stateContainer.progressionIsATriad == false) {
     $.get(`data/prog-0${unitNum}.json`, loadData)
 
+    // FOR TRIAD PROGRESSIONS
+} else if (stateContainer.progressionIsATriad == true) {
+$.get(`data/triads-0${unitNum}.json`, loadData)
+}
     function loadData(data) {
       stateContainer.data = data;
       stateContainer.unit = unitNum;
@@ -206,8 +216,8 @@ function loadProgressionUnit(unitNum) {
 
     function start() {
       // clear the inside
-
-      var progression = [];
+  // FOR REGULAR PROGRESSIONS
+      if (stateContainer.progressionIsATriad == false) {
       // pick a random Progression
       // this function generates the index for a random progression
       stateContainer.data.progressionIndex = Math.floor(Math.random() * stateContainer.data.progressions.length);
@@ -221,10 +231,47 @@ function loadProgressionUnit(unitNum) {
       //   // console.log("pushing X")
       // }
       console.log("state.storedAnswer: ", stateContainer.data.storedAnswer)
-      // Initialize check flag
-      // The check flag determines whether the answer will be colored depending if it's correct or not.
-      stateContainer.data.check = false
 
+
+    }
+
+// FOR TRIAD PROGRESSIONS
+    if (stateContainer.progressionIsATriad == true) {
+      stateContainer.triadColNumb = 4
+      // pick 4 times one of the options at random and store it as a progression.
+      // Ex, var progression should look like ["M","m","d","d"]
+      stateContainer.data.triadProgression = []
+      for (var i = 0; i < stateContainer.triadColNumb; i++) {
+      // this function generates the index for a random progression
+      Math.floor(Math.random() * stateContainer.data.Options.length);
+      stateContainer.data.triadProgression.push(stateContainer.data.Options[Math.floor(Math.random() * stateContainer.data.Options.length)])
+
+        // console.log("pushing X")
+      }
+      // Also pick a random root Array
+      // Define Root Array
+      stateContainer.data.triadRoot = []
+      // Loop through Array
+      for (var i = 0; i < stateContainer.triadColNumb; i++) {
+        // generate a random root number in each element of root array
+      stateContainer.data.triadRoot.push(pickRandomRoot())
+    }
+      // prints selected prog chord
+      console.log("selected prog: ", stateContainer.data.triadProgression)
+      // initialize user answer Array
+      stateContainer.data.storedAnswer = new Array(stateContainer.triadColNumb).fill(" X")
+      // fill the array storedAnswer with dummy elements "X"
+      // for (var i = 0, l = state.progressions[state.progressionIndex].chords.length; i < (l-1); ++i) {
+      // state.storedAnswer.push(" X")
+      //   // console.log("pushing X")
+      // }
+      console.log("stateContainer.storedAnswer: ", stateContainer.data.storedAnswer)
+
+    }
+
+    // Initialize check flag
+    // The check flag determines whether the answer will be colored depending if it's correct or not.
+    stateContainer.data.check = false
       // make Progression Interface
       makeProgressionUI()
       Listener.helperFunctions.addEventListeners("progressions");
@@ -245,10 +292,20 @@ function loadProgressionUnit(unitNum) {
         // Highlight the button when click
         $(this).addClass("btnClicked")
         // update the storedAnswer, which is what the user is selecting as progression
-        //WIP
+
         // update storedAnswer with column number as first number and chordSymbol as second argument
         var columnNumb = $(this).parent().index()
-        var chordSymb = stateContainer.data.options[$(this).index()]
+
+        // FOR REGULAR PROGRESSIONS
+
+          if (stateContainer.progressionIsATriad == false) {
+                  var chordSymb = stateContainer.data.options[$(this).index()]
+
+          // FOR TRIAD PROGRESSIONS
+      } else if (stateContainer.progressionIsATriad == true) {
+              var chordSymb = stateContainer.data.Options[$(this).index()]
+      }
+        // var chordSymb = stateContainer.data.options[$(this).index()]
         updateAnswer(columnNumb, chordSymb)
         // Log message about answer being correct
         // console.log(stateContainer.data.clickeditem, isCorrect())
@@ -283,6 +340,9 @@ function loadProgressionUnit(unitNum) {
       // substitute item at position "column" in an array, with item "chordSymbol"
       stateContainer.data.storedAnswer[columnNumber] = chordSymbol
       console.log("state.storedAnswer", stateContainer.data.storedAnswer)
+      // colorAnswerText()
+
+
       if (stateContainer.data.check == false) {
         var AnswerText = " " + stateContainer.data.storedAnswer[0]
         for (var i = 0, l = stateContainer.data.storedAnswer.length; i < (l - 1); ++i) {
@@ -291,10 +351,28 @@ function loadProgressionUnit(unitNum) {
         }
       }
       if (stateContainer.data.check == true) {
+
+        colorAnswerText()
+
         var color = '"red"'
+        // FOR REGULAR PROGRESSIONS
+        if (stateContainer.progressionIsATriad == false) {
+        //
+
         if (stateContainer.data.progressions[stateContainer.data.progressionIndex].chords[0].symbol == stateContainer.data.storedAnswer[0]) {
           color = '"green"'
         }
+
+      }
+
+      // FOR TRIAD PROGRESSIONS
+      if (stateContainer.progressionIsATriad == true) {
+        if (stateContainer.data.triadProgression[0] == stateContainer.data.storedAnswer[0]) {
+          color = '"green"'
+        }
+      }
+
+
         var AnswerText = " <font color=" + color + ">" + stateContainer.data.storedAnswer[0] + "</font>"
         for (var i = 1, l = stateContainer.data.storedAnswer.length; i < l; ++i) {
           // console.log("i", i)
@@ -302,7 +380,16 @@ function loadProgressionUnit(unitNum) {
           console.log("stored answer", stateContainer.data.storedAnswer[i])
           // check that the answer is correct, in that case changes the color to green
           // keeps into account that "A6" counts as "It6,Fr6,Ger6"
+          // FOR REGULAR PROGRESSIONS
+          if (stateContainer.progressionIsATriad == false) {
+          //
           var correctSym = stateContainer.data.progressions[stateContainer.data.progressionIndex].chords[i].symbol
+        }
+        // FOR TRIAD PROGRESSIONS
+        if (stateContainer.progressionIsATriad == true) {
+          var correctSym = stateContainer.data.triadProgression[i]
+        }
+
           if ((correctSym == stateContainer.data.storedAnswer[i]) || ((stateContainer.data.storedAnswer[i] == "A6" && ((correctSym == "It6") || (correctSym == "Fr6") || (correctSym == "Ger6"))))) {
             color = '"green"'
             // otherwise color is set to red
@@ -317,34 +404,40 @@ function loadProgressionUnit(unitNum) {
       // do we need this?
       stateContainer.data.AnswerText = AnswerText
       $('#answerBox').html(stateContainer.data.AnswerText)
+
+
     }
 
-    function colorAnswerText(state) {
-      var color = '"red"'
-      if (stateContainer.data.progressions[state.progressionIndex].chords[0].symbol == stateContainer.data.storedAnswer[0]) {
-        color = '"green"'
-      }
-      var AnswerText = " <font color=" + color + ">" + stateContainer.data.storedAnswer[0] + "</font>"
-      for (var i = 1, l = stateContainer.data.storedAnswer.length; i < l; ++i) {
-        console.log("i", i)
-        console.log("progresson correct chord symbol", stateContainer.data.progressions[state.progressionIndex].chords[i].symbol)
-        console.log("stored answer", stateContainer.data.storedAnswer[i])
-        // check that the answer is correct, in that case changes the color to green
-        // keeps into account that "A6" counts as "It6,Fr6,Ger6"
-        var correctSym = stateContainer.data.progressions[state.progressionIndex].chords[i].symbol
-        if ((correctSym == stateContainer.data.storedAnswer[i]) || ((stateContainer.data.storedAnswer[i] == "A6" && ((correctSym == "It6") || (correctSym == "Fr6") || (correctSym == "Ger6"))))) {
-          color = '"green"'
-          // otherwise color is set to red
-        } else {
-          color = '"red"'
-        }
-        AnswerText = AnswerText + ", &nbsp;" + " <font color=" + color + "> " + stateContainer.data.storedAnswer[i] + "</font>"
-        console.log("Answer Text", AnswerText)
-        // WIP
-      }
-      stateContainer.data.AnswerText = AnswerText
-    }
-
+    // function colorAnswerText(state) {
+    //   var color = '"red"'
+    //
+      // // FOR REGULAR PROGRESSIONS
+      //     if (stateContainer.progressionIsATriad == false) {
+    //   if (stateContainer.data.progressions[state.progressionIndex].chords[0].symbol == stateContainer.data.storedAnswer[0]) {
+    //     color = '"green"'
+    //   }
+    // }
+    //   var AnswerText = " <font color=" + color + ">" + stateContainer.data.storedAnswer[0] + "</font>"
+    //   for (var i = 1, l = stateContainer.data.storedAnswer.length; i < l; ++i) {
+    //     console.log("i", i)
+    //     console.log("progresson correct chord symbol", stateContainer.data.progressions[state.progressionIndex].chords[i].symbol)
+    //     console.log("stored answer", stateContainer.data.storedAnswer[i])
+    //     // check that the answer is correct, in that case changes the color to green
+    //     // keeps into account that "A6" counts as "It6,Fr6,Ger6"
+    //     var correctSym = stateContainer.data.progressions[state.progressionIndex].chords[i].symbol
+    //     if ((correctSym == stateContainer.data.storedAnswer[i]) || ((stateContainer.data.storedAnswer[i] == "A6" && ((correctSym == "It6") || (correctSym == "Fr6") || (correctSym == "Ger6"))))) {
+    //       color = '"green"'
+    //       // otherwise color is set to red
+    //     } else {
+    //       color = '"red"'
+    //     }
+    //     AnswerText = AnswerText + ", &nbsp;" + " <font color=" + color + "> " + stateContainer.data.storedAnswer[i] + "</font>"
+    //     console.log("Answer Text", AnswerText)
+    //     // WIP
+    //   }
+    //   stateContainer.data.AnswerText = AnswerText
+    // }
+    //
 
 
 
@@ -356,9 +449,23 @@ function loadProgressionUnit(unitNum) {
   // This works but it shouln'd be scoped like that
   function colorAnswerText() {
     var color = '"red"'
+
+    // FOR REGULAR PROGRESSIONS
+        if (stateContainer.progressionIsATriad == false) {
     if (stateContainer.data.progressions[stateContainer.data.progressionIndex].chords[0].symbol == stateContainer.data.storedAnswer[0]) {
       color = '"green"'
     }
+  }
+
+
+  // FOR TRIAD PROGRESSIONS
+      if (stateContainer.progressionIsATriad == true) {
+        if (stateContainer.data.triadProgression[0] == stateContainer.data.storedAnswer[0]) {
+          color = '"green"'
+        }
+      }
+
+
     var AnswerText = " <font color=" + color + ">" + stateContainer.data.storedAnswer[0] + "</font>"
     for (var i = 1, l = stateContainer.data.storedAnswer.length; i < l; ++i) {
       console.log("i", i)
@@ -366,7 +473,14 @@ function loadProgressionUnit(unitNum) {
       console.log("stored answer", stateContainer.data.storedAnswer[i])
       // check that the answer is correct, in that case changes the color to green
       // keeps into account that "A6" counts as "It6,Fr6,Ger6"
+      // FOR REGULAR PROGRESSIONS
+          if (stateContainer.progressionIsATriad == false) {
       var correctSym = stateContainer.data.progressions[stateContainer.data.progressionIndex].chords[i].symbol
+    }
+    // FOR TRIAD PROGRESSIONS
+        if (stateContainer.progressionIsATriad == true) {
+          var correctSym = stateContainer.data.triadProgression[i]
+        }
       if ((correctSym == stateContainer.data.storedAnswer[i]) || ((stateContainer.data.storedAnswer[i] == "A6" && ((correctSym == "It6") || (correctSym == "Fr6") || (correctSym == "Ger6"))))) {
         color = '"green"'
         // otherwise color is set to red

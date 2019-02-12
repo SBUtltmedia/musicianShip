@@ -185,6 +185,16 @@ p {
   /* justify-content: center; */
 }
 
+.btnDisabled {
+  /* the problem is that this is competing with #colums, which has higher priority */
+  background-color: rgba(100, 100, 100, 0.4);
+  border-radius: 0.3rem;
+  /* padding: 1rem; */
+  margin: 0.2rem;
+  box-shadow: inset 0px 0px 8px 2px rgba(0, 0, 0, 0.9);
+  /* justify-content: center; */
+}
+
 
 .textbox {
   /* display: flex; */
@@ -232,11 +242,13 @@ p {
 #progMenu{
     display: flex;
     flex-direction: column;
+    /* flex-direction: row; */
 }
 
 #triadMenu{
     display: flex;
     flex-direction: column;
+    /* flex-direction: row; */
 }
 
 

@@ -17,8 +17,18 @@ var Listener = {
         console.log("state.check", stateContainer)
       },
       bassBtnEvent: function(evt) {
+        // If Music is not playing, allow Bass Boost to be toggled
+        if (stateContainer.playing == false) {
           stateContainer.enhanceBass= !stateContainer.enhanceBass;
           $(evt.currentTarget).toggleClass("btnClicked")
+        }
+        // If Music is playing, add "already playing" Bass Boost
+        if (stateContainer.playing == true) {
+          // stateContainer.enhanceBass= !stateContainer.enhanceBass;
+          // Add gray out class
+          $(evt.currentTarget).addClass("btnDisabled")
+          $(evt.currentTarget).html("<p> Stop Playback First </p>")
+        }
 
         // if (stateContainer.enhanceBass == true) {
         //   console.log("removeClass")
@@ -69,7 +79,16 @@ var Listener = {
         var unitNum = evt.currentTarget.id.split("_")[1]
         console.log(evt)
         $(evt.currentTarget).addClass("btnClicked")
+        stateContainer.progressionIsATriad = false
+        loadProgressionUnit(unitNum)
+      },
 
+      // dynamically load all progression units buttin
+      triadBtnEvent: function(evt) {
+        var unitNum = evt.currentTarget.id.split("_")[1]
+        console.log(evt)
+        $(evt.currentTarget).addClass("btnClicked")
+        stateContainer.progressionIsATriad = true
         loadProgressionUnit(unitNum)
       }
 
