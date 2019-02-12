@@ -29,7 +29,7 @@ function loadMenuUI() {
     },
     {
       "unit_nb": 5,
-      "desc": "Adding V6/4, V4/3, V4/2, V6 and V6/5"
+      "desc": "Using V6/4, V4/3, V4/2, V6 and V6/5"
     },
     {
       "unit_nb": 6,
