@@ -81,7 +81,7 @@ function loadMenuUI() {
   });
   // menuTitle.addClass("bg-square")
   menuTitle.addClass("textbox")
-  menuTitle.append("<p>Mus 505 Web App</p>")
+  menuTitle.append("<p>Mus505 Section</p>")
   titleSection.append(menuTitle)
   // description
   var menuDesc = $("<div/>", {

@@ -1,21 +1,54 @@
+// Init stateContainer. It will keep track of
+// the full state of the app
 var stateContainer = {};
 
+// This function loads the very fist things
+// once the website is loaded
 $(function() {
-
-  //  var unitNum = 7
-  // loadProgressionUnit(unitNum)
-
   // Load the Menu UI
   loadMenuUI()
   makeHowl()
   resizeWindow()
   // console.log("STATE_check", state)
+  // Init MUS var
+  stateContainer.MUS="505"
 })
 
+// Create the very first menu, to choose between MUS505 or MUS506
+function MUSChoice() {
+  // Make a clear screen
+  clearStage();
+  // create the title Section
+  var titleSection = $("<div/>", {
+    id: "MainMenuTitle"
+  });
+  titleSection.addClass("bg-square")
+  // create the title box
+  var menuTitle = $("<div/>", {
+    id: "menuTitle",
+    class: "bigTitle"
+  });
+  // menuTitle.addClass("bg-square")
+  menuTitle.addClass("textbox")
+  menuTitle.append("<p>Mus505 Section</p>")
+  titleSection.append(menuTitle)
+  // description
+  var menuDesc = $("<div/>", {
+    id: "menuDesc"
+  });
+  menuDesc.addClass("bg-square")
+  menuDesc.addClass("textbox")
+  menuDesc.append("<p> Select the exercise and unit</p>")
+  titleSection.append(menuDesc)
+
+}
+
+// This function creates the MenuUI and loads JSON files
 function loadMenuUI() {
-  // console.log(state)
   // Define progression units
-  var ProgressionUnits = [{
+  var ProgressionUnits = []
+  // If MUS = 505
+  ProgressionUnits = [{
       "unit_nb": 2,
       "desc": 'Using I, i, ii6, N6, iv, ,IV, I6/4, i6/4, V'
     },
@@ -81,7 +114,7 @@ function loadMenuUI() {
   });
   // menuTitle.addClass("bg-square")
   menuTitle.addClass("textbox")
-  menuTitle.append("<p>Mus 505 Web App</p>")
+  menuTitle.append("<p>Mus505 Section</p>")
   titleSection.append(menuTitle)
   // description
   var menuDesc = $("<div/>", {
@@ -182,11 +215,11 @@ function loadProgressionUnit(unitNum) {
   // FOR REGULAR PROGRESSIONS
 
     if (stateContainer.progressionIsATriad == false) {
-    $.get(`data/prog-0${unitNum}.json`, loadData)
+    $.get(`data/${stateContainer.MUS}prog-0${unitNum}.json`, loadData)
 
     // FOR TRIAD PROGRESSIONS
 } else if (stateContainer.progressionIsATriad == true) {
-$.get(`data/triads-0${unitNum}.json`, loadData)
+$.get(`data/${stateContainer.MUS}triads-0${unitNum}.json`, loadData)
 }
     function loadData(data) {
       stateContainer.data = data;
