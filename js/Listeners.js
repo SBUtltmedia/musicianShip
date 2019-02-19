@@ -90,6 +90,20 @@ var Listener = {
         $(evt.currentTarget).addClass("btnClicked")
         stateContainer.progressionIsATriad = true
         loadProgressionUnit(unitNum)
+      },
+
+      // dynamically load all MUS selection buttin
+      Mus505BtnEvent: function(evt) {
+        console.log(evt)
+        $(evt.currentTarget).addClass("btnClicked")
+        stateContainer.MUS = "505"
+        loadMenuUI()
+      },
+      Mus506BtnEvent: function(evt) {
+        console.log(evt)
+        $(evt.currentTarget).addClass("btnClicked")
+        stateContainer.MUS = "506"
+        loadMenuUI()
       }
 
       // // Enable all button functions
@@ -107,12 +121,8 @@ var Listener = {
   },
   helperFunctions: {
     addEventListeners: function(page) {
-      // console.log(stateContainer)
       $('.button').on("click", function(evt) {
-
         Listener["pages"][page][evt.currentTarget.id.split("_")[0] + "Event"](evt)
-
-
       })
 
     }

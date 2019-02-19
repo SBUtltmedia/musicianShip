@@ -1,3 +1,0 @@
-<?
-`zip -r hearChords.zip .`;
-?>
