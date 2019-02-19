@@ -12,7 +12,7 @@ $(function() {
   resizeWindow()
   // console.log("STATE_check", state)
   // Init MUS var
-  stateContainer.MUS = "505"
+  stateContainer.Mus = "505"
 })
 
 // Create the very first menu, to choose between MUS505 or MUS506
@@ -79,10 +79,8 @@ function MUSChoice() {
 
 // This function creates the MenuUI and loads JSON files
 function loadMenuUI() {
-  // Define progression units
-  var ProgressionUnits = []
-  // If MUS = 505
-  ProgressionUnits = [{
+  // Progression Units for 505
+  var ProgressionUnits505 = [{
       "unit_nb": 2,
       "desc": 'Using I, i, ii6, N6, iv, ,IV, I6/4, i6/4, V'
     },
@@ -107,6 +105,21 @@ function loadMenuUI() {
       "desc": "Using VI during progressions"
     }
   ]
+  var ProgressionUnits506 = [{
+      "unit_nb": 10,
+      "desc": 'Using I, i, ii6, N6, iv, ,IV, I6/4, i6/4, V'
+    }
+  ]
+  // Define progression units
+  var ProgressionUnits = []
+  // Change ProgressionUnits according to MUS class
+  if (stateContainer.Mus == "505") {
+    ProgressionUnits = ProgressionUnits505
+  }
+  if (stateContainer.Mus == "506") {
+    ProgressionUnits = ProgressionUnits506
+  }
+
 
   // Define triad units
   var TriadUnits = [{
@@ -249,11 +262,11 @@ function loadProgressionUnit(unitNum) {
     // FOR REGULAR PROGRESSIONS
 
     if (stateContainer.progressionIsATriad == false) {
-      $.get(`data/${stateContainer.MUS}prog-0${unitNum}.json`, loadData)
+      $.get(`data/${stateContainer.Mus}prog-0${unitNum}.json`, loadData)
 
       // FOR TRIAD PROGRESSIONS
     } else if (stateContainer.progressionIsATriad == true) {
-      $.get(`data/${stateContainer.MUS}triads-0${unitNum}.json`, loadData)
+      $.get(`data/${stateContainer.Mus}triads-0${unitNum}.json`, loadData)
     }
 
     function loadData(data) {

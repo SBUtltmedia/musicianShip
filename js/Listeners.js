@@ -96,13 +96,13 @@ var Listener = {
       Mus505BtnEvent: function(evt) {
         console.log(evt)
         $(evt.currentTarget).addClass("btnClicked")
-        stateContainer.MUS = "505"
+        stateContainer.Mus = "505"
         loadMenuUI()
       },
       Mus506BtnEvent: function(evt) {
         console.log(evt)
         $(evt.currentTarget).addClass("btnClicked")
-        stateContainer.MUS = "506"
+        stateContainer.Mus = "506"
         loadMenuUI()
       }
 
