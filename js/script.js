@@ -107,7 +107,7 @@ function loadMenuUI() {
   ]
   var ProgressionUnits506 = [{
       "unit_nb": 10,
-      "desc": 'Using I, i, ii6, N6, iv, ,IV, I6/4, i6/4, V'
+      "desc": 'Distinguishing V7, V6/5, V4/3 and vii&oslash;7, vii&oslash;6/5, vii&oslash;4/3'
     }
   ]
   // Define progression units
@@ -262,11 +262,12 @@ function loadProgressionUnit(unitNum) {
     // FOR REGULAR PROGRESSIONS
 
     if (stateContainer.progressionIsATriad == false) {
-      $.get(`data/${stateContainer.Mus}prog-0${unitNum}.json`, loadData)
+      // $.get(`data/${stateContainer.Mus}prog-0${unitNum}.json`, loadData)
+      $.get(`data/${stateContainer.Mus}prog-${pad2Z(unitNum)}.json`, loadData)
 
       // FOR TRIAD PROGRESSIONS
     } else if (stateContainer.progressionIsATriad == true) {
-      $.get(`data/${stateContainer.Mus}triads-0${unitNum}.json`, loadData)
+      $.get(`data/${stateContainer.Mus}triads-${pad2Z(unitNum)}.json`, loadData)
     }
 
     function loadData(data) {
@@ -573,4 +574,11 @@ function colorAnswerText() {
     // WIP
   }
   stateContainer.data.AnswerText = AnswerText
+}
+
+// pads a numer with leading zero to 2 digits (ex: 3=>03, 13=>13)
+function pad2Z(n, width = 2, z) {
+  z = z || '0';
+  n = n + '';
+  return n.length >= width ? n : new Array(width - n.length + 1).join(z) + n;
 }

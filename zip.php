@@ -1,3 +1,3 @@
 <?
-`zip -r hearChords.zip .`;
+`zip -r musicianShipApp.zip .`;
 ?>
