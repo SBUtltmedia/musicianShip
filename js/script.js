@@ -120,7 +120,7 @@ function loadMenuUI() {
     ProgressionUnits = ProgressionUnits506
   }
 
-
+  // MUS 505 or MUS 506 SCREEN GEN
   // Define triad units
   var TriadUnits = [{
       "unit_nb": 1,
@@ -154,6 +154,13 @@ function loadMenuUI() {
     id: "MainMenuTitle"
   });
   titleSection.addClass("bg-square")
+  // create backBtn
+  var backBtn = $("<div/>", {
+    id: "backBtn",
+    class: "menuBtn button"
+  });
+  backBtn.append("<p> Back To Menu </p>")
+  titleSection.append(backBtn)
   // create the title box
   var menuTitle = $("<div/>", {
     id: "menuTitle",

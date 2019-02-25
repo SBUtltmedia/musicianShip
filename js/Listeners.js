@@ -82,7 +82,10 @@ var Listener = {
         stateContainer.progressionIsATriad = false
         loadProgressionUnit(unitNum)
       },
-
+      backBtnEvent: function(evt) {
+        $(evt.currentTarget).addClass("btnClicked")
+        MUSChoice() 
+      },
       // dynamically load all progression units buttin
       triadBtnEvent: function(evt) {
         var unitNum = evt.currentTarget.id.split("_")[1]
