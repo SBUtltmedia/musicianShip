@@ -218,3 +218,16 @@ function stopAllSound() {
   //   howlerList[key].stop();
   // });
 }
+
+function LoadChordsByBass() {
+// groupChordsByBass
+var ChordsByBass = {}
+ChordsByBass["1"] = ["I","i"]
+ChordsByBass["2"] = ["V6/4","V6/3"]
+ChordsByBass["3"] = ["I6","i6"]
+ChordsByBass["4"] = ["IV","iv","ii6", "N6","V4/2"]
+ChordsByBass["5"] = ["V","V7","I6/4", "i6/4"]
+ChordsByBass["6"] = ["VI","vi"]
+ChordsByBass["7"] = ["V6","V6/5"]
+
+}

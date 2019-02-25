@@ -45,7 +45,7 @@ background-repeat: repeat-x;
 background-size:4rem;
 animation: MOVE-BG 10s infinite linear;
 
-top:20rem;
+top:30rem;
 	bottom: 0;
 	left: 0;
 	right: 0;
@@ -90,6 +90,20 @@ p {
   border-radius: 0.3rem;
   padding: 1rem;
   margin: 0.2rem;
+  box-shadow: inset 0px 0px 8px 2px rgba(0, 0, 0, 0.9);
+  color: white;
+  justify-content: center;
+  /* text-transform: uppercase; */
+}
+
+/* Welcome Square theming for background square enveloping elements */
+.welcome-square {
+  display: flex;
+  flex-direction: column;
+  background-color: #251e38;
+  border-radius: 2rem;
+  padding: 2rem;
+  margin: 2rem;
   box-shadow: inset 0px 0px 8px 2px rgba(0, 0, 0, 0.9);
   color: white;
   justify-content: center;

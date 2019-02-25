@@ -5,25 +5,26 @@ var stateContainer = {};
 // This function loads the very fist things
 // once the website is loaded
 $(function() {
-  MUSChoice()
-  // Load the Menu UI
-  // loadMenuUI()
-  makeHowl()
+  // Sets up constant proportions for CSS, based on rem units:
   resizeWindow()
-  // console.log("STATE_check", state)
-  // Init MUS var
+  // Loads the Weclome Screen, where you can choose MUS class
+  MUSChoice()
+  // Load the sound files and obscurates everything with loaeding screen
+  makeHowl()
+  // Initialize MUS var
   stateContainer.Mus = "505"
 })
 
-// Create the very first menu, to choose between MUS505 or MUS506
+// Creates the Welcome Screen, to choose between MUS505 or MUS506
 function MUSChoice() {
   // Make a clear screen
   clearStage();
   // create the title Section
   var titleSection = $("<div/>", {
-    id: "MainMenuTitle"
+    id: "WelcomeTitleSection",
+    class: "welcome-square"
   });
-  titleSection.addClass("bg-square")
+  titleSection.addClass("welcome-square")
   // create the title box
   var menuTitle = $("<div/>", {
     id: "menuTitle",
@@ -44,7 +45,7 @@ function MUSChoice() {
   // create the MusMenu section
   var MusMenu = $("<div/>", {
     id: "MusMenu",
-    class: "bg-square"
+    class: "welcome-square"
   });
   // create the Mus title box
   var MusTitle = $("<div/>", {

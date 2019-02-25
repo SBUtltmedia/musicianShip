@@ -36,6 +36,7 @@ function makeHowl() {
   //  The goal is to have the sprite as an object for which the keys are the notes and the values are the numbers for the position of the sprite
   sound = new Howl({
     autoplay: false,
+    // html5: true,
     src: ['samples/output500.webm', 'samples/output500.mp3'],
     // src: ['samples/output500.mp3'],
     sprite: sprite
@@ -53,10 +54,33 @@ function makeHowl() {
     id: "loadingMessage"
   });
   loadingMessage.addClass("bg-square")
+  loadingMessage.addClass("welcome-square")
   loadingMessage.addClass("textbox")
   loadingMessage.append("<p>Loading...</p>")
   loadingMessage.append("<p>(please wait)</p>")
-  loadingDiv.append(loadingMessage)
+
+  // ADD TITLE TO LOADING SCREEN
+  // create the title Section
+  var titleSection = $("<div/>", {
+    id: "WelcomeTitleSection",
+    class: "welcome-square"
+  });
+  titleSection.addClass("welcome-square")
+  // create the title box
+  var menuTitle = $("<div/>", {
+    id: "menuTitle",
+    class: "bigTitle"
+  });
+  // menuTitle.addClass("bg-square")
+  menuTitle.addClass("textbox")
+  menuTitle.append("<p>The MusicianShip App</p>")
+  // append everyhing
+  titleSection.append(menuTitle)
+  titleSection.append(loadingMessage)
+
+  loadingDiv.append(titleSection)
+
+  // loadingDiv.append(loadingMessage)
 
   $('#stage').append(loadingDiv);
   sound.on('load', function() {
