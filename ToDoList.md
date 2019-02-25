@@ -1,6 +1,6 @@
 # To-Do List for the MusicianShip App
 - [ ] Re-comment and clarify the whole code
-- [ ] Mention Perry as owner of the material
+- [x] Mention Perry as owner of the material
 - [ ] Re-vamp Loading Screen
 - [ ] Re-vamp Welcome Screen
 - [ ] Make a musicianShip icon based on a boat and a note

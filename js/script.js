@@ -39,7 +39,7 @@ function MUSChoice() {
   });
   menuDesc.addClass("bg-square")
   menuDesc.addClass("textbox")
-  menuDesc.append("<p> Based on SBU Mus505 and Mus506 material </p>")
+  menuDesc.append("<p> Based on SBU Mus505 and Mus506 material </p> <p> as taught by Prof. Perry Goldstein </p>")
   titleSection.append(menuDesc)
   // create the MusMenu section
   var MusMenu = $("<div/>", {
