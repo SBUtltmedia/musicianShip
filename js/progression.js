@@ -197,7 +197,7 @@ function playProgressionAndHighlightColumn(arrayOfChords, durationOfEachChord = 
       console.log(theSound.playing())
 
         if ((chordNum < arrayOfChords.length - 1) && (stateContainer.stopPlayback == false)) {
-        setTimeout(function(){ iterate(chordNum + 1)},500);
+        setTimeout(function(){ iterate(chordNum + 1)},1000);
         } else {
 
           dfd.resolve("hurray");

@@ -12,6 +12,9 @@
 - [ ] Add better graphics and sound version to stable version
 - [ ] Substitute 88keys.js magic numbers with variable
 - [ ] Set interval between chords to 2 seconds
+- [ ] html5 plus Preload howler js tag
 
 # Features to MAYBE add or maybe not
 - [ ] enhancebass slider to different levels
+- [ ] add general volume
+- [ ] grading system

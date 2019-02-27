@@ -68,14 +68,14 @@ function MUSChoice() {
     id: "Mus506Btn",
     class: "progBtn button"
   })
-  Mus506Btn.append("<p> Mus506 </p>")
+  Mus506Btn.append("<p> Mus506 (under construction)</p>")
   MusMenu.append(Mus506Btn)
   // FootNote
   var Footnote = $("<div/>", {
     id: "Footnote",
     class: "footnote"
   })
-  Footnote.append("<p> 2019 - App Developed in the Stony Brook TLL Media Lab by Alessandro Fadini, under the guide of Paul St-Denis.</p>")
+  Footnote.append("<p> 2019. App Developed in the <em> TLL - Stony Brook TLT Media Lab</em> by Alessandro Fadini, under the guide of Paul St-Denis.</p>")
   // MusMenu.append(Mus506Btn)
   // Add divs to the Page
   $('#stage').append([titleSection, MusMenu, Footnote])
@@ -252,7 +252,12 @@ function loadMenuUI() {
   // unitBtn.append("<p> Progression 7 </p>")
   // topMenu.append(unitBtn)
 
+  if (stateContainer.Mus == 505) {
   $('#stage').append([titleSection, progMenu, triadMenu])
+}
+if (stateContainer.Mus == 506) {
+$('#stage').append([titleSection, progMenu])
+}
 
   // enable event listeners
   Listener.helperFunctions.addEventListeners("menu");
