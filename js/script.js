@@ -39,8 +39,8 @@ function MUSChoice() {
     id: "menuDesc"
   });
   menuDesc.addClass("bg-square")
-  menuDesc.addClass("textbox")
-  menuDesc.append("<p> Based on SBU Mus505 and Mus506 material </p> <p> as taught by Prof. Perry Goldstein </p>")
+  menuDesc.addClass("comment")
+  menuDesc.append("<p> Based on SBU Mus505 and Mus506 material, </p> <p> as taught by Prof. Perry Goldstein. </p>")
   titleSection.append(menuDesc)
   // create the MusMenu section
   var MusMenu = $("<div/>", {
@@ -53,7 +53,7 @@ function MUSChoice() {
   });
   MusTitle.addClass("bg-square")
   MusTitle.addClass("textbox")
-  MusTitle.append("<p>Musicianship Classes:</p>")
+  MusTitle.append("<p>Choose Your Musicianship Class</p>")
   MusMenu.append(MusTitle)
   // create a menu of MUS options
   // MUS 505 Btn
@@ -70,8 +70,15 @@ function MUSChoice() {
   })
   Mus506Btn.append("<p> Mus506 </p>")
   MusMenu.append(Mus506Btn)
+  // FootNote
+  var Footnote = $("<div/>", {
+    id: "Footnote",
+    class: "footnote"
+  })
+  Footnote.append("<p> 2019 - App Developed in the TLL Media Lab by Alessandro Fadini, under the guide of Paul St-Denis.</p>")
+  // MusMenu.append(Mus506Btn)
   // Add divs to the Page
-  $('#stage').append([titleSection, MusMenu])
+  $('#stage').append([titleSection, MusMenu, Footnote])
   // enable event listeners
   Listener.helperFunctions.addEventListeners("menu");
 

@@ -69,19 +69,29 @@ function makeHowl() {
   // create the title box
   var menuTitle = $("<div/>", {
     id: "menuTitle",
-    class: "bigTitle"
+    class: "loadingTitle"
   });
   // menuTitle.addClass("bg-square")
   menuTitle.addClass("textbox")
+  // menuTitle.append("<p>The </p> <p> MusicianShip</p> <p>App</p>")
   menuTitle.append("<p>The MusicianShip App</p>")
+  // create Logo Div
+  var logoDiv = $("<div/>", {
+    id: "logoDiv"
+  });
+  // titleSection.append(logoDiv)
+  // logoDiv.addClass("bg-square")
+
   // append everyhing
   titleSection.append(menuTitle)
+  titleSection.append(logoDiv)
   titleSection.append(loadingMessage)
 
   loadingDiv.append(titleSection)
 
   // loadingDiv.append(loadingMessage)
-
+  // $('#theDiv').prepend('<img id="theImg" src="theImg.png" />')
+  // loadingDiv.prepend('<img id="Logo" src="img/logo.png" />')
   $('#stage').append(loadingDiv);
   sound.on('load', function() {
     loadingMessage.append("<p>Done!</p>")
