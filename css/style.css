@@ -101,8 +101,9 @@ p {
   margin: auto;
   display: flex;
   /* flex-direction: column; */
-  margin: 0.3rem;
-  width: 5rem;
+  margin: 0.2rem;
+  padding: 0.6rem;
+  /* width: 4rem; */
   height: 1.5rem;
   color: white;
   text-shadow: 0 0 10px #000000;
@@ -246,9 +247,21 @@ p {
 #title div {
   text-align: right;
 } */
-#columns {
+#columns, #columns>div{
   display: flex;
-  padding: 0.2rem;
+
+}
+#columns
+{
+
+  flex-direction:column ;
+  padding: 1rem;
+}
+
+#columns>div{
+  padding: 0.5rem;
+  flex-direction:row ;
+
 }
 
 /* #columns>div {

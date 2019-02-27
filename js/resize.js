@@ -1,5 +1,5 @@
 $(window).resize(resizeWindow);
-var aspect = 4/ 3;
+var aspect = 5/ 3;
 var baseFontFactor = 60;
 var paddingFactor = .9;
 var stageHeight,  stageWidth;
