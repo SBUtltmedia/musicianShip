@@ -1,5 +1,8 @@
 {
-    "options": ["I", "i", "IV", "ii6", "N6", "iv", "I6/4", "i6/4", "V"],
+    "options": ["I", "i",  "V6/4", "V4/3", "viio6/5",
+      "I6", "i6", "IV", "IV7", "iv", "ii6","ii6/5", "N6", "V4/2", "vii&oslash;4/3",
+      "ii&oslash;6/5", "viio4/3", "I6/4", "i6/4", "V", "V7", "A6", "VI", "VI7",
+      "vi", "vi7", "V6", "V6/5","viio7"],
     "progressions": [{
         "key": "G",
         "chords": [{
