@@ -353,14 +353,19 @@ height:15%; */
 	/* margin: auto; */
 
 
+
   background-image: url(../img/logo.png);
   background-repeat: no-repeat;
-  /* background-attachment: fixed; */
  background-position: center;
  background-size: 14rem;
    display: flex;
    padding: 7rem;
+   /* -webkit-filter: saturate(1); */
+   -webkit-filter: hue-rotate(59deg);
+   /* -webkit-filter: brightness(0.25); */
    /* margin: 1rem; */
+   /*Filter styles*/
+
 
 }
 

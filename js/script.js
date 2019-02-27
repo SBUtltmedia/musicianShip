@@ -75,7 +75,7 @@ function MUSChoice() {
     id: "Footnote",
     class: "footnote"
   })
-  Footnote.append("<p> 2019 - App Developed in the TLL Media Lab by Alessandro Fadini, under the guide of Paul St-Denis.</p>")
+  Footnote.append("<p> 2019 - App Developed in the Stony Brook TLL Media Lab by Alessandro Fadini, under the guide of Paul St-Denis.</p>")
   // MusMenu.append(Mus506Btn)
   // Add divs to the Page
   $('#stage').append([titleSection, MusMenu, Footnote])
