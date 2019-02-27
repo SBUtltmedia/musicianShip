@@ -9,3 +9,4 @@
 - [ ] Fix Safari sound issues (WAITING ON THEIR FIX, add html5 = true?)
 - [ ] Add multiple nested menu for modulations, group chords by bass
 - [ ] Find a way to insert silence between chords when playing progressions
+- [ ] Add better graphics to stable version 

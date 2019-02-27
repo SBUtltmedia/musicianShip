@@ -31,9 +31,10 @@ for (i = 0; i < 88; i++) {
 console.log(sprite)
 console.log(JSON.stringify(keyArray).split(",").join(" "))
 
-// prepares the Howler.js backend and shows a loading screen
-function makeHowl() {
-  //  The goal is to have the sprite as an object for which the keys are the notes and the values are the numbers for the position of the sprite
+
+
+function makeSound(){
+
   sound = new Howl({
     autoplay: false,
     // html5: true,
@@ -41,7 +42,16 @@ function makeHowl() {
     // src: ['samples/output500.mp3'],
     sprite: sprite
 
+
   });
+
+
+}
+
+
+function makeHowl() {
+  //  The goal is to have the sprite as an object for which the keys are the notes and the values are the numbers for the position of the sprite
+  makeSound()
   console.log(sound)
 
   var loadingDiv = $("<div/>", {
@@ -102,8 +112,10 @@ function makeHowl() {
 
 }
 
-function playChord(arr, duration = 1000, bassBoost = false, fadeDuration = 2000) {
-
+function playChord(arr, duration = 1000, bassBoost = false) {
+  sound.stop()
+  var fadeDuration =100;
+  var soundItems=[]
 
   for (i in arr) {
 
@@ -111,36 +123,48 @@ function playChord(arr, duration = 1000, bassBoost = false, fadeDuration = 2000)
     if (typeof arr[i] == 'number') {
       var mySound = keyArray[arr[i]]
     }
-    sound.play(mySound)
+    var soundIndex=soundItems.length
+    soundItems[soundIndex] =sound.play(mySound)
 
+    sound.volume(.1,soundItems[soundIndex])
     // Add Bass bassBoost
 
-    // Old Method
-    // if(i==0 && bassBoost=2){
-    // sound.play(mySound)
+
+    // if (i == 0 && bassBoost == true) {
+    //   sound.play(mySound)
     // }
-
-    // New Method
-
-    // WIP
-    if (i == 0 && bassBoost == true) {
-      sound.play(mySound)
-    }
 
 
     // volume is reduced to 0.1 since piling up different sounds produces distortion
-    sound.fade(0.1, 0, fadeDuration);
-//     onEnd: function(){
-//   if (this.volume == 0.6)
-//     alert("Volume is currently 0.6!");
-// }
-//
-// onVolume: function(){
-//   if (this.volume == 0.1)
-//     alert("Volume is currently 0.1!");
-// }
+
+
+
+    //     onEnd: function(){
+    //   if (this.volume == 0.6)
+    //     alert("Volume is currently 0.6!");
+    // }
+    //
+    // onVolume: function(){
+    //   if (this.volume == 0.1)
+    //     alert("Volume is currently 0.1!");
+    // }
 
   }
+  if ( bassBoost == true) {
+        sound.volume(.2,soundItems[0])
+  }
+
+  setTimeout(()=>{
+
+    soundItems.forEach(function(element) {
+ sound.fade(.1,0,100,element);
+//sound.stop(element);
+});
+
+  },1000
+)
+
+
 
   return sound;
 }

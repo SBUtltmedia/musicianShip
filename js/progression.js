@@ -176,7 +176,7 @@ function playSelectedProgression(evt) {
 }
 
 // Play a progression of chords and highlight the correspondant column
-function playProgressionAndHighlightColumn(arrayOfChords, durationOfEachChord = 1000, bassBoost = stateContainer.enhanceBass, IntervalBetweenChords = 2000) {
+function playProgressionAndHighlightColumn(arrayOfChords, durationOfEachChord = 1000, bassBoost = stateContainer.enhanceBass) {
   var dfd = $.Deferred();
 
   // initialize StopPlayback flag
@@ -188,15 +188,24 @@ function playProgressionAndHighlightColumn(arrayOfChords, durationOfEachChord = 
     // Highlight the column indexed with number chordNum + 1
     $('#columns div:nth-child(' + (chordNum + 1) + ')' + 'div div').addClass("btnHighlighted")
     // Play the Chord corresponding to the column
-    playChord(arrayOfChords[chordNum], durationOfEachChord, bassBoost, IntervalBetweenChords).once("fade", function() {
+    var theSound=playChord(arrayOfChords[chordNum], durationOfEachChord, bassBoost)
+
+
+    // theSound.once("fade", function() {
+    theSound.once("fade", function() {
+            // theSound.stop();
+      console.log(theSound.playing())
+
         if ((chordNum < arrayOfChords.length - 1) && (stateContainer.stopPlayback == false)) {
-          iterate(chordNum + 1)
+        setTimeout(function(){ iterate(chordNum + 1)},500);
         } else {
 
           dfd.resolve("hurray");
 
         }
       }
+
+
       // // Remove highlight from all columns
       // $('#columns div div').removeClass("btnHighlighted")
       // What is this parenthesis for?? If I removed everything breaks
