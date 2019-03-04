@@ -112,7 +112,7 @@ function makeHowl() {
 
 }
 
-function playChord(arr, duration = 1000, bassBoost = false) {
+function playChord(arr, duration = 2000, bassBoost = false) {
   sound.stop()
   var fadeDuration =100;
   var soundItems=[]
@@ -127,27 +127,6 @@ function playChord(arr, duration = 1000, bassBoost = false) {
     soundItems[soundIndex] =sound.play(mySound)
 
     sound.volume(.1,soundItems[soundIndex])
-    // Add Bass bassBoost
-
-
-    // if (i == 0 && bassBoost == true) {
-    //   sound.play(mySound)
-    // }
-
-
-    // volume is reduced to 0.1 since piling up different sounds produces distortion
-
-
-
-    //     onEnd: function(){
-    //   if (this.volume == 0.6)
-    //     alert("Volume is currently 0.6!");
-    // }
-    //
-    // onVolume: function(){
-    //   if (this.volume == 0.1)
-    //     alert("Volume is currently 0.1!");
-    // }
 
   }
   if ( bassBoost == true) {
@@ -157,11 +136,11 @@ function playChord(arr, duration = 1000, bassBoost = false) {
   setTimeout(()=>{
 
     soundItems.forEach(function(element) {
- sound.fade(.1,0,100,element);
+ sound.fade(.1,0,fadeDuration,element);
 //sound.stop(element);
 });
 
-  },1000
+}, duration
 )
 
 

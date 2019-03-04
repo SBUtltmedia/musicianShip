@@ -176,12 +176,11 @@ function playSelectedProgression(evt) {
 }
 
 // Play a progression of chords and highlight the correspondant column
-function playProgressionAndHighlightColumn(arrayOfChords, durationOfEachChord = 1000, bassBoost = stateContainer.enhanceBass) {
+function playProgressionAndHighlightColumn(arrayOfChords, durationOfEachChord = 2000, bassBoost = stateContainer.enhanceBass, intervalBetweenChords = 1500) {
   var dfd = $.Deferred();
 
   // initialize StopPlayback flag
   stateContainer.stopPlayback = false
-
   function iterate(chordNum) {
     // Remove highlight from all columns
     $('#columns div div').removeClass("btnHighlighted")
@@ -197,7 +196,7 @@ function playProgressionAndHighlightColumn(arrayOfChords, durationOfEachChord = 
       console.log(theSound.playing())
 
         if ((chordNum < arrayOfChords.length - 1) && (stateContainer.stopPlayback == false)) {
-        setTimeout(function(){ iterate(chordNum + 1)},1000);
+        setTimeout(function(){ iterate(chordNum + 1)}, intervalBetweenChords);
         } else {
 
           dfd.resolve("hurray");

@@ -10,10 +10,12 @@
 - [ ] Fix Safari sound issues (WAITING ON THEIR FIX, add html5 = true?)
 - [ ] Add multiple nested menu for modulations, group chords by bass
 - [x] Find a way to insert silence between chords when playing progressions
-- [ ] Add better graphics and sound version to stable version
-- [ ] Substitute 88keys.js magic numbers with variable
+- [ ] Copy the improved version to stable version
+- [x] Substitute 88keys.js magic numbers with variable
 - [ ] Set interval between chords to 2 seconds
 - [ ] html5 plus Preload howler js tag
+- [ ] protect the app with password only for SBU students
+- [ ] fix the progression re-click problem
 
 # Features to MAYBE add or maybe not
 - [ ] enhancebass slider to different levels
