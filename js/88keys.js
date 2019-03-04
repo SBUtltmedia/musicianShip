@@ -38,6 +38,7 @@ function makeSound(){
   sound = new Howl({
     autoplay: false,
     // html5: true,
+// pool:0,
     src: ['samples/output500.webm', 'samples/output500.mp3'],
     // src: ['samples/output500.mp3'],
     sprite: sprite

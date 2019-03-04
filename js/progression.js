@@ -155,7 +155,9 @@ function playSelectedProgression(evt) {
   }
 
   // Play the progression and highlight the column
-  playProgressionAndHighlightColumn(RandProgChordsArray).then(
+  var playPromise = playProgressionAndHighlightColumn(RandProgChordsArray)
+
+  playPromise.then(
     function() {
       // Remove highlight from all columns
       $('#columns div div').removeClass("btnHighlighted")
@@ -169,73 +171,102 @@ function playSelectedProgression(evt) {
       // Log music played
       console.log("Progression Played")
     })
-
-
-
+  console.log(playPromise)
 
 }
 
 // Play a progression of chords and highlight the correspondant column
 function playProgressionAndHighlightColumn(arrayOfChords, durationOfEachChord = 2000, bassBoost = stateContainer.enhanceBass, intervalBetweenChords = 1500) {
+  // sound.stop()
+  // console.log(arrayOfChords)
   var dfd = $.Deferred();
 
   // initialize StopPlayback flag
   stateContainer.stopPlayback = false
+
   function iterate(chordNum) {
+
+    // console.log("playing the array", arrayOfChords, "on iteration", chordNum)
+    console.log("playing iteration", chordNum)
+
     // Remove highlight from all columns
     $('#columns div div').removeClass("btnHighlighted")
     // Highlight the column indexed with number chordNum + 1
     $('#columns div:nth-child(' + (chordNum + 1) + ')' + 'div div').addClass("btnHighlighted")
+
     // Play the Chord corresponding to the column
-    var theSound=playChord(arrayOfChords[chordNum], durationOfEachChord, bassBoost)
+    var theSound = playChord(arrayOfChords[chordNum], durationOfEachChord, bassBoost)
+    // if (stateContainer.resolvePromisePrematurely) {
 
-
-    // theSound.once("fade", function() {
-    theSound.once("fade", function() {
-            // theSound.stop();
-      console.log(theSound.playing())
-
-        if ((chordNum < arrayOfChords.length - 1) && (stateContainer.stopPlayback == false)) {
-        setTimeout(function(){ iterate(chordNum + 1)}, intervalBetweenChords);
-        } else {
-
-          dfd.resolve("hurray");
-
-        }
+    var interval = setInterval(function() {
+      if (stateContainer.stopPlayback) {
+        // sound.stop()
+        dfd.resolve("hurray");
+        clearInterval(interval)
+        // This somehow fixes repetition
+        chordNum = 10
+        console.log("Promise Resolved While Polling")
       }
+    }, 100)
 
 
-      // // Remove highlight from all columns
-      // $('#columns div div').removeClass("btnHighlighted")
-      // What is this parenthesis for?? If I removed everything breaks
-    )
+    // stateContainer.resolvePromisePrematurely = false
+//     theSound.once("stop", function() {
+//         if (stateContainer.stopPlayback) {
+//           sound.stop()
+//           dfd.resolve("hurray");
+//           console.log("Promise Resolved On Stop")
+//         }
+//       }
+// )
+
+      theSound.once("fade", function() {
+          // sound.stop()
+
+          // console.log(theSound.playing())
+          if ((chordNum < arrayOfChords.length - 1) && (stateContainer.stopPlayback == false)) {
+            // setTimeout(function() {
+            iterate(chordNum + 1)
+            // }, intervalBetweenChords);
+          } else {
+            sound.stop();
+            dfd.resolve("hurray");
+
+          }
+        }
+
+
+        // // Remove highlight from all columns
+        // $('#columns div div').removeClass("btnHighlighted")
+        // What is this parenthesis for?? If I removed everything breaks
+      )
+    }
+    iterate(0)
+    return dfd.promise();
+
   }
-  iterate(0)
-  return dfd.promise();
-
-}
 
 
-//MOVE THIS FUCNTION TO PROGRESSION!!!
-function stopAllSound() {
-  sound.stop()
-  stateContainer.stopPlayback = true
-  // Remove highlight from all columns
-  $('#columns div div').removeClass("btnHighlighted")
-  // Object.keys(howlerList).forEach(function(key) {
-  //   howlerList[key].stop();
-  // });
-}
+  //MOVE THIS FUCNTION TO PROGRESSION!!!
+  function stopAllSound() {
+    sound.stop()
+    stateContainer.stopPlayback = true
+    // Remove highlight from all columns
+    $('#columns div div').removeClass("btnHighlighted")
+    // Object.keys(howlerList).forEach(function(key) {
+    //   howlerList[key].stop();
+    // });
+  }
 
-function LoadChordsByBass() {
-// groupChordsByBass
-var ChordsByBass = {}
-ChordsByBass["1"] = ["I","i"]
-ChordsByBass["2"] = ["V6/4","V6/3"]
-ChordsByBass["3"] = ["I6","i6"]
-ChordsByBass["4"] = ["IV","iv","ii6", "N6","V4/2"]
-ChordsByBass["5"] = ["V","V7","I6/4", "i6/4"]
-ChordsByBass["6"] = ["VI","vi"]
-ChordsByBass["7"] = ["V6","V6/5"]
+  function LoadChordsByBass() {
+    // groupChordsByBass
+    var ChordsByBass = {}
+    ChordsByBass["1"] = ["I", "i"]
+    ChordsByBass["2"] = ["V6/4", "V6/3"]
+    ChordsByBass["3"] = ["I6", "i6"]
+    ChordsByBass["4"] = ["IV", "iv", "ii6", "N6", "V4/2"]
+    ChordsByBass["5"] = ["V", "V7", "I6/4", "i6/4"]
+    ChordsByBass["6"] = ["VI", "vi"]
+    ChordsByBass["7"] = ["V6", "V6/5"]
 
-}
+  }

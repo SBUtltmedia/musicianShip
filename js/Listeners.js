@@ -49,6 +49,7 @@ var Listener = {
         // playSelectedProgression(evt)
         if (stateContainer.playing == true) {
           // console.log("removeClass")
+          // stateContainer.resolvePromisePrematurely = true
                 stopAllSound()
           $(evt.currentTarget).removeClass("btnClicked")
           stateContainer.playing = false
@@ -84,7 +85,7 @@ var Listener = {
       },
       backBtnEvent: function(evt) {
         $(evt.currentTarget).addClass("btnClicked")
-        MUSChoice() 
+        MUSChoice()
       },
       // dynamically load all progression units buttin
       triadBtnEvent: function(evt) {
