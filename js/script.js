@@ -116,7 +116,10 @@ function loadMenuUI() {
   var ProgressionUnits506 = [{
       "unit_nb": 10,
       "desc": 'Distinguishing V7, V6/5, V4/3 and vii&oslash;7, vii&oslash;6/5, vii&oslash;4/3'
-    }
+    }, {
+    "unit_nb": 11,
+    "desc": 'Dummy Unit'
+  }
   ]
   // Define progression units
   var ProgressionUnits = []

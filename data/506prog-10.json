@@ -1,9 +1,5 @@
 {
-  "options": ["I", "i", "V6/4", "V4/3", "viio6/5",
-    "I6", "i6", "IV", "IV7", "iv", "ii6", "ii6/5", "N6", "V4/2", "vii&oslash;4/3",
-    "ii&oslash;6/5", "viio4/3", "I6/4", "i6/4", "V", "V7", "A6", "VI", "VI7",
-    "vi", "vi7", "V6", "V6/5", "viio7"
-  ],
+  "options": ["I", "i", "V6/4", "V4/3", "viio6/5", "I6", "i6", "IV", "IV7", "iv", "ii6", "ii6/5", "N6", "V4/2", "vii&oslash;4/3", "ii&oslash;6/5", "viio4/3", "I6/4", "i6/4", "V", "V7", "A6", "VI", "VI7", "vi", "vi7", "V6", "V6/5", "viio7"],
   "progressions": [{
     "key": "C",
     "chords": [{
@@ -35,31 +31,36 @@
       "notes": ["3D", "4D", "4F", "4A"]
     }, {
       "symbol": "viio7",
-      "notes": ["3C", "4C", "4Eb", "4Ab"]
+      "notes": ["3Db", "4E", "4G", "4Bb"]
     }, {
       "symbol": "i",
-      "notes": ["3D", "3B", "4D", "4G"]
+      "notes": ["3D", "4D", "4F", "4A"]
     }, {
-      "symbol": "vii06/5",
-      "notes": ["3D", "3A", "4D", "4Gb"]
+      "symbol": "viio6/5",
+      "notes": ["3E", "3Bb", "4Db", "4G"]
     }, {
       "symbol": "i6",
-      "notes": ["2G", "3B", "4D", "4G"],
-      "____WORK_IN_PROGRESS"
+      "notes": ["3F", "3A", "4D", "4F"]
     }]
   }, {
-    "key": "F",
+    "key": "G",
     "chords": [{
       "symbol": "I",
-      "notes": ["3F", "4C", "4F", "4A"]
+      "notes": ["2G", "3G", "4D", "4B"]
     }, {
-      "symbol": "ii6",
+      "symbol": "V4/3",
       "notes": ["2Bb", "4D", "4F", "4Bb"]
     }, {
-      "symbol": "V",
+      "symbol": "I6",
       "notes": ["3C", "4C", "4E", "4G"]
     }, {
-      "symbol": "V",
+      "symbol": "vii&oslash;4/3",
+      "notes": ["3C", "4C", "4E", "4G"]
+    }, {
+      "symbol": "I6/4",
+      "notes": ["3C", "4C", "4E", "4G"]
+    }, {
+      "symbol": "V7",
       "notes": ["3C", "4C", "4E", "4G"]
     }, {
       "symbol": "I",

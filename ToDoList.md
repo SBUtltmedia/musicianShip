@@ -1,10 +1,11 @@
 # To-Do List for the MusicianShip App
 - [ ] Re-comment and clarify the whole code
 - [x] Mention Perry as owner of the material
-- [ ] Re-vamp Loading Screen
-- [ ] Re-vamp Welcome Screen
+- [x] Re-vamp Loading Screen
+- [x] Re-vamp Welcome Screen
 - [x] Make a musicianShip icon based on a boat and a note
 - [ ] Add all MUS506 progressions
+- [ ] Add highlighting in AnswerBox while playing, for each chord played
 - [x] Add a back button close to the title MUS sections
 - [ ] Fix Safari sound issues (WAITING ON THEIR FIX, add html5 = true?)
 - [ ] Add multiple nested menu for modulations, group chords by bass
