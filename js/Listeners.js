@@ -47,20 +47,15 @@ var Listener = {
         // return (this.tog = !this.tog) ? playSelectedProgression(evt) : stopAllSound();
         // stopAllSound()
         // playSelectedProgression(evt)
-        if (stateContainer.playing == true) {
-          // console.log("removeClass")
-          // stateContainer.resolvePromisePrematurely = true
-                stopAllSound()
-          $(evt.currentTarget).removeClass("btnClicked")
-          stateContainer.playing = false
-        }
-        else {
-                  playSelectedProgression(evt)
-          $(evt.currentTarget).addClass("btnClicked")
-          // console.log("addClass")
-          stateContainer.playing = true
-        }
-
+          
+	  stateContainer.playing = !stateContainer.playing;
+	$(evt.currentTarget).toggleClass("btnClicked")
+	  stopAllSound()
+	  console.log(stateContainer.playing)
+	  if(stateContainer.playing)
+	  {
+	  playSelectedProgression(evt)
+          }
       },
       backBtnEvent: function(evt) {
         $(evt.currentTarget).addClass("btnClicked")
@@ -85,7 +80,7 @@ var Listener = {
       },
       backBtnEvent: function(evt) {
         $(evt.currentTarget).addClass("btnClicked")
-        MUSChoice()
+        MUSChoice() 
       },
       // dynamically load all progression units buttin
       triadBtnEvent: function(evt) {
