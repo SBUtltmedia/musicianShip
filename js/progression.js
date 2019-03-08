@@ -174,12 +174,12 @@ function playSelectedProgression(evt) {
 }
 
 // Play a progression of chords and highlight the correspondant column
-function playProgressionAndHighlightColumn(arrayOfChords, durationOfEachChord = 1000, bassBoost = stateContainer.enhanceBass) {
+function playProgressionAndHighlightColumn(arrayOfChords, durationOfEachChord = 1500, bassBoost = stateContainer.enhanceBass, silenceBetweenChords = 1500) {
   var dfd = $.Deferred();
 
   // initialize StopPlayback flag
   stateContainer.soundChannels= stateContainer.soundChannels||[]
-  
+
   function iterate(chordNum) {
 	if(stateContainer.playing && (chordNum==0|| chordNum== stateContainer.previousChord+1)){
     // Remove highlight from all columns
@@ -190,16 +190,16 @@ function playProgressionAndHighlightColumn(arrayOfChords, durationOfEachChord = 
     stateContainer.soundChannels.push(playChord(arrayOfChords[chordNum], durationOfEachChord, bassBoost))
 
 
-    // theSound.once("fade", function() {
+    // When the last chord has played (on "fade")
     stateContainer.soundChannels[stateContainer.soundChannels.length-1].once("fade", function() {
-            // theSound.stop();
+            // play each chord in the array, with a silence of length "silenceBetweenChords"
         if ((chordNum < arrayOfChords.length - 1)) {
 	setTimeout(
 		function(){
-			stateContainer.previousChord=chordNum; 
+			stateContainer.previousChord=chordNum;
 			iterate(chordNum + 1)
 			  }
-		,1000)
+		,silenceBetweenChords)
         } else {
 
 	stateContainer.playing=false;
@@ -208,7 +208,7 @@ function playProgressionAndHighlightColumn(arrayOfChords, durationOfEachChord = 
         }
       }
     )
-}  
+}
 }
   iterate(0)
   return dfd.promise();
