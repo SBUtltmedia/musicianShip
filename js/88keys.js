@@ -114,7 +114,7 @@ function makeHowl() {
 
 function playChord(arr, duration = 1000, bassBoost = false) {
   sound.stop()
-  var fadeDuration =100;
+  var fadeDuration =200;
   var soundItems=[]
 
   for (i in arr) {
@@ -157,11 +157,11 @@ function playChord(arr, duration = 1000, bassBoost = false) {
   setTimeout(()=>{
 
     soundItems.forEach(function(element) {
- sound.fade(.1,0,100,element);
+ sound.fade(.1,0,fadeDuration,element);
 //sound.stop(element);
 });
 
-  },1000
+},duration
 )
 
 
