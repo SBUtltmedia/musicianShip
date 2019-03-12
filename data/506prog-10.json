@@ -181,149 +181,52 @@
       "notes": ["2B", "3Gb", "4D", "4B"]
     }]
   }, {
-      "GOT TO HERE": "",
-    "key": "g",
+    "key": "a",
     "chords": [{
       "symbol": "i",
-      "notes": ["2G", "4D", "4G", "4Bb"]
+      "notes": ["2A", "3A", "4E", "5C"]
     }, {
-      "symbol": "N6",
-      "notes": ["3C", "4C", "4Eb", "4Ab"]
-    }, {
-      "symbol": "i6/4",
-      "notes": ["3D", "3Bb", "4D", "4G"]
-    }, {
-      "symbol": "V",
-      "notes": ["3D", "3A", "4D", "4Gb"]
+      "symbol": "viio7",
+      "notes": ["2Ab", "3B", "4F", "5D"]
     }, {
       "symbol": "i",
-      "notes": ["2G", "3Bb", "4D", "4G"]
-    }]
-  }, {
-    "key": "g",
-    "chords": [{
-      "symbol": "i",
-      "notes": ["2G", "4D", "4G", "4Bb"]
+      "notes": ["2A", "3A", "4E", "5C"]
     }, {
-      "symbol": "ii6",
-      "notes": ["3C", "4C", "4Eb", "4A"]
-    }, {
-      "symbol": "i6/4",
-      "notes": ["3D", "3Bb", "4D", "4G"]
-    }, {
-      "symbol": "V",
-      "notes": ["3D", "3A", "4D", "4Gb"]
-    }, {
-      "symbol": "i",
-      "notes": ["2G", "3Bb", "4D", "4G"]
-    }]
-  }, {
-    "key": "f",
-    "chords": [{
-      "symbol": "i",
-      "notes": ["2F", "4C", "4F", "4Ab"]
-    }, {
-      "symbol": "N6",
-      "notes": ["2Bb", "3Bb", "4Db", "4Gb"]
-    }, {
-      "symbol": "i6/4",
-      "notes": ["3C", "3Ab", "4C", "4F"]
-    }, {
-      "symbol": "V",
-      "notes": ["3C", "3G", "4C", "4E"]
-    }, {
-      "symbol": "i",
-      "notes": ["2F", "3Ab", "4C", "4F"]
-    }]
-  }, {
-    "key": "f",
-    "chords": [{
-      "symbol": "i",
-      "notes": ["3F", "4C", "4F", "4Ab"]
-    }, {
-      "symbol": "iv",
-      "notes": ["2Bb", "4D", "4F", "4Bb"]
-    }, {
-      "symbol": "i6/4",
-      "notes": ["3C", "4C", "4F", "4Ab"]
-    }, {
-      "symbol": "V",
-      "notes": ["3C", "4C", "4E", "4G"]
-    }, {
-      "symbol": "i",
-      "notes": ["2F", "3Ab", "4C", "4F"]
-    }]
-  }, {
-    "key": "c",
-    "chords": [{
-      "symbol": "i",
-      "notes": ["3C", "4C", "4Eb", "4G"]
-    }, {
-      "symbol": "i",
-      "notes": ["3C", "4C", "4Eb", "4G"]
-    }, {
-      "symbol": "ii6",
-      "notes": ["2F", "3Ab", "4D", "4F"]
-    }, {
-      "symbol": "V",
-      "notes": ["2G", "3G", "3B", "4D"]
-    }, {
-      "symbol": "i",
-      "notes": ["3C", "3G", "4C", "4E"]
-    }]
-  }, {
-    "key": "c",
-    "chords": [{
-      "symbol": "i",
-      "notes": ["3C", "4C", "4Eb", "4G"]
-    }, {
-      "symbol": "iv",
-      "notes": ["3F", "3Ab", "4C", "4F"]
-    }, {
-      "symbol": "i6/4",
-      "notes": ["3G", "4C", "4Eb"]
-    }, {
-      "symbol": "V",
-      "notes": ["2G", "3G", "3Bb", "4D"]
-    }, {
-      "symbol": "i",
-      "notes": ["3C", "3G", "4C", "4Eb"]
-    }]
-  }, {
-    "key": "bb",
-    "chords": [{
-      "symbol": "i",
-      "notes": ["2Bb", "4Db", "4F", "4Bb"]
-    }, {
-      "symbol": "N6",
-      "notes": ["3Eb", "4Eb", "4Gb", "4B"]
-    }, {
-      "symbol": "i6/4",
-      "notes": ["3F", "4Db", "4F", "4Bb"]
-    }, {
-      "symbol": "V",
-      "notes": ["3F", "4C", "4F", "4A"]
-    }, {
-      "symbol": "VI",
-      "notes": ["3Gb", "3Bb", "4Db", "4Bb"]
-    }]
-  }, {
-    "key": "bb",
-    "chords": [{
-      "symbol": "i",
-      "notes": ["2Bb", "3Bb", "4F", "5Db"]
+      "symbol": "viio6/5",
+      "notes": ["2B", "3Ab", "4F", "5B"]
     }, {
       "symbol": "i6",
-      "notes": ["3F", "3Bb", "4F", "4Bb"]
+      "notes": ["3C", "3A", "4E", "4A"]
     }, {
-      "symbol": "ii6",
-      "notes": ["3Eb", "4C", "4Gb", "5C"]
-    }, {
-      "symbol": "V",
-      "notes": ["3F", "4C", "4F", "4A"]
+      "symbol": "iv",
+      "notes": ["3D", "3A", "4F", "4A"]
     }, {
       "symbol": "i",
-      "notes": ["3Bb", "4Db", "4F", "4Bb"]
+      "notes": ["2A", "4C", "4E", "4A"]
+    }]
+  }, {
+    "key": "d",
+    "chords": [{
+      "symbol": "i",
+      "notes": ["3D", "3A", "4F", "4A"]
+    }, {
+      "symbol": "viio7",
+      "notes": ["3Db", "3G", "4E", "5Bb"]
+    }, {
+      "symbol": "i",
+      "notes": ["3D", "3F", "4F", "4A"]
+    }, {
+      "symbol": "i6",
+      "notes": ["2F", "3A", "4D", "4F"]
+    }, {
+      "symbol": "ii&oslash;6/5",
+      "notes": ["2G", "3Bb", "4D", "4E"]
+    }, {
+      "symbol": "V7",
+      "notes": ["2A", "3G", "4Db", "4E"]
+    }, {
+      "symbol": "i",
+      "notes": ["3D", "3F", "4F", "4A"]
     }]
   }]
 }
