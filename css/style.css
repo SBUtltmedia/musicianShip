@@ -8,6 +8,7 @@ position:absolute;
 align-items: center;
 }
 
+
 body {
   background-color: black;
   font-family: 'Dosis', sans-serif;
@@ -318,7 +319,7 @@ position:absolute;
 }
 
 #loadingMessage{
-  margin: 3rem 4rem 8rem 4rem;
+  margin: 7rem 4rem 2rem 4rem;
   padding: 3rem;
 }
 /*
@@ -339,13 +340,22 @@ background-repeat: repeat-x;
 background-size:4rem;
 animation: MOVE-BG 10s infinite linear;
 
-top:65rem;
+top:42rem;
 	bottom: 0;
 	left: 0;
 	right: 0;
 
 	margin: auto;
 }
+
+
+/* The animation code */
+@keyframes logo {
+  /* from {fill: rgba(77, 70, 90, 0.9);} */
+  from {fill: rgba(37, 30, 56, 1);}
+  to {fill: rgba(87, 90, 120, 0.6);}
+}
+
 
 #logoDiv{
 /* width:20%;
@@ -365,24 +375,32 @@ height:15%; */
 	left: 0;
 	right: 0; */
 
-	/* margin: auto; */
+	margin: auto;
+  width: 15rem;
+  height: 15rem;
+  /* fill: rgba(87, 90, 106, 0.9); */
+  fill: rgba(37, 30, 56, 1);
+  /* transition: fill 3s ease-out; */
 
+  animation-name: logo;
+animation-duration: 1s;
+animation-iteration-count: 9;
+animation-direction: alternate;
+animation-delay: 1s;
 
-
-  background-image: url(../img/logo.png);
+  /* background-image: url(../img/logo.svg);
   background-repeat: no-repeat;
  background-position: center;
  background-size: 14rem;
    display: flex;
    padding: 7rem;
-   /* -webkit-filter: saturate(1); */
-   -webkit-filter: hue-rotate(59deg);
-   /* -webkit-filter: brightness(0.25); */
-   /* margin: 1rem; */
-   /*Filter styles*/
+
+   -webkit-filter: hue-rotate(59deg); */
 
 
 }
+
+
 
 /* #progMenu>div {
   flex: 1;

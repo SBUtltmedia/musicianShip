@@ -68,7 +68,7 @@ function MUSChoice() {
     id: "Mus506Btn",
     class: "progBtn button"
   })
-  Mus506Btn.append("<p> Mus506 (under construction)</p>")
+  Mus506Btn.append("<p> Mus506 </p>")
   MusMenu.append(Mus506Btn)
   // FootNote
   var Footnote = $("<div/>", {
@@ -118,7 +118,7 @@ function loadMenuUI() {
       "desc": 'Distinguishing V7, V6/5, V4/3 and vii&oslash;7, vii&oslash;6/5, vii&oslash;4/3'
     }, {
     "unit_nb": 11,
-    "desc": 'Dummy Unit'
+    "desc": 'Under Constrution'
   }
   ]
   // Define progression units
