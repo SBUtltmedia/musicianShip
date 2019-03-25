@@ -35,10 +35,10 @@ console.log(JSON.stringify(keyArray).split(",").join(" "))
 
 function makeSound() {
 
-  sound = new Howl({
+  return new Howl({
     autoplay: false,
     // html5: true,
-    src: ['samples/output500.webm', 'samples/output500.mp3'],
+    src: ['samples/output500.ogg', 'samples/output500.mp3', 'samples/output500.webm'],
     // src: ['samples/output500.mp3'],
     sprite: sprite
 
@@ -51,7 +51,21 @@ function makeSound() {
 
 function makeHowl() {
   //  The goal is to have the sprite as an object for which the keys are the notes and the values are the numbers for the position of the sprite
-  makeSound()
+  sound = makeSound()
+  sound.once('load', function() {
+    loadingMessage.append("<p>Done!</p>")
+    $('#loading').hide(200);
+
+  });
+
+
+  function showSeek() {
+    requestAnimationFrame(showSeek)
+    console.log(sound.state())
+  }
+
+  showSeek()
+
   console.log(sound)
 
   var loadingDiv = $("<div/>", {
@@ -104,11 +118,7 @@ function makeHowl() {
   // $('#theDiv').prepend('<img id="theImg" src="theImg.png" />')
   // loadingDiv.prepend('<img id="Logo" src="img/logo.png" />')
   $('#stage').append(loadingDiv);
-  sound.on('load', function() {
-    loadingMessage.append("<p>Done!</p>")
-    $('#loading').hide(200);
 
-  });
 
 
 }
