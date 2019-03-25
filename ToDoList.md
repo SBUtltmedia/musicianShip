@@ -22,3 +22,4 @@
 - [ ] add general volume
 - [ ] grading system
 - [ ] add a side button to play only one specific progression
+- [ ] add sanity check thing that verifies that every progression has an aswer
