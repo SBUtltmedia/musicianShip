@@ -13,7 +13,7 @@
 - [x] Copy the improved version to stable version
 - [x] Substitute 88keys.js magic numbers with variable
 - [x] Set interval between chords to 2 seconds
-- [ ] html5 plus Preload howler js tag
+- [x] html5 plus Preload howler js tag (not worth it)
 - [x] protect the app with password only for SBU students
 - [x] fix the progression re-click problem
 
@@ -21,3 +21,4 @@
 - [ ] enhancebass slider to different levels
 - [ ] add general volume
 - [ ] grading system
+- [ ] add a side button to play only one specific progression
