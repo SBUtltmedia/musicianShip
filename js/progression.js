@@ -65,8 +65,8 @@ function makeProgressionUI() {
   // create the answerbox
   var answerbox = $("<div/>", {
     id: "answerBox",
-    class: "bg-square",
-    html: "<p>  </p>"
+    class: "bg-square"
+
   });
   // create columns
   var columns = $("<div/>", {
@@ -75,7 +75,7 @@ function makeProgressionUI() {
   columns.addClass("bg-square")
 
   // FOR REGULAR PROGRESSIONS
-  if (stateContainer.progressionIsATriad == false) {
+  if (stateContainer.progressionType == "progressions") {
     //
     //var column=createOptions(state.options)
     for (i of stateContainer.data.progressions[stateContainer.data.progressionIndex].chords) {
@@ -84,10 +84,10 @@ function makeProgressionUI() {
 
   }
   // FOR TRIAD PROGRESSIONS
-  if (stateContainer.progressionIsATriad == true) {
+  if (stateContainer.progressionType == "triads") {
 
     for (var i = 0; i < stateContainer.triadColNumb; i++) {
-      columns.append(createOptions(stateContainer.data.Options))
+      columns.append(createOptions(stateContainer.data.options))
     }
 
 
@@ -117,10 +117,10 @@ function playSelectedProgression(evt) {
   // Highlight the PLAY button when click
   $(this).addClass("btnClicked")
   // Define the array of the progression
-  var RandProgChordsArray = []
+  stateContainer.RandProgChordsArray = []
 
   // FOR REGULAR PROGRESSIONS
-  if (stateContainer.progressionIsATriad == false) {
+  if (stateContainer.progressionType == "progressions") {
 
     // Log the progresson to be played
     console.log("stateContainer.data.progressions[stateContainer.data.progressionIndex].chords", stateContainer.data.progressions[stateContainer.data.progressionIndex].chords)
@@ -130,32 +130,50 @@ function playSelectedProgression(evt) {
       // log each chord
       // console.log("i.notes", i.notes)
       // Push chords from state to RandProgChordsArray
-      RandProgChordsArray.push(i.notes)
+      stateContainer.RandProgChordsArray.push(i.notes)
     };
 
   }
 
-  // FOR TRIAD PROGRESSIONS
-  if (stateContainer.progressionIsATriad == true) {
-    var notes = []
-    // Build the array of notes generated from the corresponding triad
-    for (i in stateContainer.data.triadProgression) {
-      // pick a random root in the middle-low register
-      // WIP
-      var root = stateContainer.data.triadRoot
-      console.log("root", root)
-      // get the corresponding notes from the chord symbol
-      notes = convertSymbolToNotes(root[i], stateContainer.data.triadProgression[i])
-      console.log("stateContainer.data.triadProgression[i]", stateContainer.data.triadProgression[i])
+  // FOR TRIAD PROGRESSIONS (TO BE DELETED)
+  if (stateContainer.progressionType == "triads") {
+// WWWWIIIIIIPPPP
+// WIPWIP
+    for (var i =0; i < stateContainer.triadColNumb; i++) {
+    // for (var i of stateContainer.data.triadColNumb) {
+    // for (var i of stateContainer.data.triads) {
+      // log each chord
+      // console.log("i.notes", i.notes)
       // Push chords from state to RandProgChordsArray
-      RandProgChordsArray.push(notes)
-      console.log("RandProgChordsArray is:", RandProgChordsArray)
+      stateContainer.RandProgChordsArray.push(stateContainer.data.triads.chords[i ])
+      // stateContainer.RandProgChordsArray.push(i.chords)
+      console.log("pushing item : ", i,"which is", stateContainer.data.triads.chords[i])
+      // console.log("pushing item : ", i,"which is", stateContainer.data.triads.chords[i])
+      // console.log("pushing item number: ", i,"which is", stateContainer.RandProgChordsArray.push(i.chords))
     };
+    // var notes = []
+    // // Build the array of notes generated from the corresponding triad
+    // for (i in stateContainer.data.triads) {
+    //   // pick a random root in the middle-low register
+    //   // WIP
+    //   var root = stateContainer.data.triadRoot
+    //   console.log("root", root)
+    //   // get the corresponding notes from the chord symbol
+    //   notes = convertSymbolToNotes(root[i], stateContainer.data.triads[i])
+    //   console.log("stateContainer.data.triads[i]", stateContainer.data.triads[i])
+    //   // Push chords from state to stateContainer.RandProgChordsArray
+    //   stateContainer.RandProgChordsArray.push(notes)
+    //   console.log("stateContainer.RandProgChordsArray is:", stateContainer.RandProgChordsArray)
+    // };
 
   }
+
+  console.log(stateContainer.RandProgChordsArray)
+
+
 
   // Play the progression and highlight the column
-  playProgressionAndHighlightColumn(RandProgChordsArray).then(
+  playProgressionAndHighlightColumn(stateContainer.RandProgChordsArray).then(
     function() {
       // Remove highlight from all columns
       $('#columns div div').removeClass("btnHighlighted")
@@ -229,4 +247,23 @@ sound.stop(poppedChannel);
   // Object.keys(howlerList).forEach(function(key) {
   //   howlerList[key].stop();
   // });
+}
+
+function generateTriadNotesFromRootAndStoredAnswer() {
+  // Initialize triads.chords
+    stateContainer.data.triads.chords = []
+  var notes = []
+  // Build the array of notes generated from the corresponding triad
+  for (i in stateContainer.data.triads) {
+    // pick a random root in the middle-low register
+    // WIP
+    var root = stateContainer.data.triadRoot
+    console.log("root", root)
+    // get the corresponding notes from the chord symbol
+    notes = convertSymbolToNotes(root[i], stateContainer.data.triads[i])
+    console.log("stateContainer.data.triads[i]", stateContainer.data.triads[i])
+    // Push chords from state to stateContainer.RandProgChordsArray
+    stateContainer.data.triads.chords.push(notes)
+    console.log("stateContainer.RandProgChordsArray is:", stateContainer.data.triads.chords)
+  };
 }

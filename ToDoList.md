@@ -16,6 +16,7 @@
 - [x] html5 plus Preload howler js tag (not worth it)
 - [x] protect the app with password only for SBU students
 - [x] fix the progression re-click problem
+- [ ] turn off loading thing
 
 # Features to MAYBE add or maybe not
 - [ ] enhancebass slider to different levels

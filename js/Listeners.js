@@ -7,7 +7,7 @@ var Listener = {
         $(evt.currentTarget).addClass("btnClicked")
         console.log("state.check", stateContainer)
         colorAnswerText()
-        $('#answerBox').html(stateContainer.data.AnswerText)
+        // $('#answerBox').html(stateContainer.data.AnswerText)
       },
       menuBtnEvent: function(evt) {
         stateContainer.data.check = true
@@ -47,7 +47,7 @@ var Listener = {
         // return (this.tog = !this.tog) ? playSelectedProgression(evt) : stopAllSound();
         // stopAllSound()
         // playSelectedProgression(evt)
-          
+
 	  stateContainer.playing = !stateContainer.playing;
 	$(evt.currentTarget).toggleClass("btnClicked")
 	  stopAllSound()
@@ -75,19 +75,19 @@ var Listener = {
         var unitNum = evt.currentTarget.id.split("_")[1]
         console.log(evt)
         $(evt.currentTarget).addClass("btnClicked")
-        stateContainer.progressionIsATriad = false
+        stateContainer.progressionType = "progressions"
         loadProgressionUnit(unitNum)
       },
       backBtnEvent: function(evt) {
         $(evt.currentTarget).addClass("btnClicked")
-        MUSChoice() 
+        MUSChoice()
       },
       // dynamically load all progression units buttin
       triadBtnEvent: function(evt) {
         var unitNum = evt.currentTarget.id.split("_")[1]
         console.log(evt)
         $(evt.currentTarget).addClass("btnClicked")
-        stateContainer.progressionIsATriad = true
+        stateContainer.progressionType = "triads"
         loadProgressionUnit(unitNum)
       },
 
