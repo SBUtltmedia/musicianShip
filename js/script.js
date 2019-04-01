@@ -361,7 +361,7 @@ function loadProgressionUnit(unitNum) {
     stateContainer.data.check = false
     // make Progression Interface
     makeProgressionUI()
-    stateContainer.data.storedAnswer = new Array(totalColumns).fill("X")
+    stateContainer.data.storedAnswer = new Array(totalColumns).fill(" ")
     stateContainer.data.storedAnswer.forEach((item)=>{
 
 console.log(totalColumns)
