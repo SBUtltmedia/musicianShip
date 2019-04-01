@@ -5,7 +5,7 @@ var paddingFactor = .9;
 var stageHeight,  stageWidth;
 function resizeWindow() {
   var viewport =  $(window)
-  console.log(viewport.width(),$(window).width())
+  // console.log(viewport.width(),$(window).width())
 
 var w= viewport.width() ;
 var h=  viewport.height();

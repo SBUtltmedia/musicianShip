@@ -2,11 +2,13 @@ var Listener = {
   pages: {
     progressions: {
       checkBtnEvent: function(evt) {
-        stateContainer.data.check = true
-        //  console.log(this)
-        $(evt.currentTarget).addClass("btnClicked")
+
+        //stateContainer.data.doCheck = !stateContainer.data.doCheck
+
+        $(evt.currentTarget).toggleClass("btnClicked");
         console.log("state.check", stateContainer)
-        colorAnswerText()
+        colorAnswerText($('#checkBtn').hasClass('btnClicked'))
+        //  $('.answerBoxItem').toggle();
         // $('#answerBox').html(stateContainer.data.AnswerText)
       },
       menuBtnEvent: function(evt) {
@@ -19,7 +21,7 @@ var Listener = {
       bassBtnEvent: function(evt) {
         // If Music is not playing, allow Bass Boost to be toggled
         if (stateContainer.playing == false) {
-          stateContainer.enhanceBass= !stateContainer.enhanceBass;
+          stateContainer.enhanceBass = !stateContainer.enhanceBass;
           $(evt.currentTarget).toggleClass("btnClicked")
         }
         // If Music is playing, add "already playing" Bass Boost
@@ -48,14 +50,13 @@ var Listener = {
         // stopAllSound()
         // playSelectedProgression(evt)
 
-	  stateContainer.playing = !stateContainer.playing;
-	$(evt.currentTarget).toggleClass("btnClicked")
-	  stopAllSound()
-	  console.log(stateContainer.playing)
-	  if(stateContainer.playing)
-	  {
-	  playSelectedProgression(evt)
-          }
+        stateContainer.playing = !stateContainer.playing;
+        $(evt.currentTarget).toggleClass("btnClicked")
+        stopAllSound()
+        console.log(stateContainer.playing)
+        if (stateContainer.playing) {
+          playSelectedProgression(evt)
+        }
       },
       backBtnEvent: function(evt) {
         $(evt.currentTarget).addClass("btnClicked")

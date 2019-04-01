@@ -94,6 +94,7 @@ function makeProgressionUI() {
   }
 
   $('#stage').append([titleSection, topMenu, answerbox, columns])
+
 }
 
 

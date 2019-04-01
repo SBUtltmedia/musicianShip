@@ -461,12 +461,12 @@ console.log(totalColumns)
     // substitute item at position "column" in an array, with item "chordSymbol"
     stateContainer.data.storedAnswer[columnNumber] = chordSymbol
     console.log("state.storedAnswer", stateContainer.data.storedAnswer)
-    // colorAnswerText()
+    //   color = "green"
+
+colorAnswerText($('#checkBtn').hasClass('btnClicked'))
 
 
-
-
-      colorAnswerText()
+    //  colorAnswerText()
 
       // var color = '"red"'
       // // FOR REGULAR PROGRESSIONS
@@ -561,8 +561,8 @@ console.log(totalColumns)
 
 
 // This works but it shouln'd be scoped like that
-function colorAnswerText() {
-
+function colorAnswerText(doCheck) {
+console.log(doCheck)
 for (var i = 0, l = stateContainer.data.storedAnswer.length; i < l; ++i) {
 
 
@@ -578,10 +578,13 @@ for (var i = 0, l = stateContainer.data.storedAnswer.length; i < l; ++i) {
     if (rightAnswer == stateContainer.data.storedAnswer[i]) {
       color = "green"
     }
+if(!doCheck){
+    color = "white"
+}
 
 $(`#answerBox div:nth-child(${i+1})`).html(stateContainer.data.storedAnswer[i])
 
-$(`#answerBox div:nth-child(${i+1})`).attr("style", "color:"+color)
+$(`#answerBox div:nth-child(${i+1})`).css({"color":color})
 
 }
 
