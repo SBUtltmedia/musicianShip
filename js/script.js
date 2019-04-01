@@ -280,18 +280,6 @@ function loadProgressionUnit(unitNum) {
 
   function loadUnit(unitNum) {
 
-    // $.get(`data/prog-0${unitNum}.json`, loadData)
-
-    // // FOR REGULAR PROGRESSIONS
-    //
-    // if (stateContainer.progressionIsATriad == false) {
-    //   // $.get(`data/${stateContainer.Mus}prog-0${unitNum}.json`, loadData)
-    //   $.get(`data/${stateContainer.Mus}prog-${pad2Z(unitNum)}.json`, loadData)
-    //
-    //   // FOR TRIAD PROGRESSIONS
-    // } else if (stateContainer.progressionIsATriad == true) {
-
-    // THIS HAS TO BE TESTED
       $.get(`data/${stateContainer.Mus}${stateContainer.progressionType}-${pad2Z(unitNum)}.json`, loadData)
     }
 
@@ -302,21 +290,6 @@ function loadProgressionUnit(unitNum) {
       start();
     }
   }
-
-  // function loadTriadUnit(unitNum) {
-  //   clearStage()
-  //   loadTriadUnit(unitNum)
-  //
-  //   function loadTriadUnit(unitNum) {
-  //     $.get(`data/triads-0${unitNum}.json`, loadData)
-  //
-  //     function loadData(data) {
-  //       stateContainer.triadsdata = data;
-  //       stateContainer.unit = unitNum;
-  //       // console.log("STATE_check", state)
-  //       start();
-  //     }
-  //   }
 
 
 
@@ -569,7 +542,11 @@ for (var i = 0, l = stateContainer.data.storedAnswer.length; i < l; ++i) {
 
 
   var color = "red"
-  var rightAnswer= stateContainer.data.progressions[stateContainer.data.progressionIndex].chords[i].symbol
+  var rightAnswer
+  // FOR REGULAR PROGRESSIONS
+  if (stateContainer.progressionType == "progressions") {
+  rightAnswer= stateContainer.data.progressions[stateContainer.data.progressionIndex].chords[i].symbol
+}
   // FOR REGULAR PROGRESSIONS
   if (stateContainer.progressionType == "triads") {
   rightAnswer=  stateContainer.data.triads[i]
