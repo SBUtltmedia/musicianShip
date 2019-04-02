@@ -6,22 +6,20 @@ state.options = data.options;
 state.progressions = data.progressions;
 
 // for every one of the items in .progressions
-// loop in their .chords array
-// for each item in .chords, check its "symbol" key
-// make sure that the "symbol" vaule exists in state.options
-for (i in data) {
+for (i in data.progressions) {
+  // loop in their .chords array
+  var currentChords= i.chords;
+  // for each item in .chords, check its "symbol" key
+for (each in currentChords) {
+  // make sure that the "symbol" vaule exists in state.options
+   var currentSymbol = each.symbol
+  if (SymbolIsInOptions(currentSymbol) = false) {
 
-var newChords= [];
-
-  for (j in data[i].chords){
-var newChord={}
-
-newChord.symbol =data[i].chords[j]
-newChord.notes=data[i].notes[j]
-
-newChords.push(newChord);
+  }
 }
-newChords.chords=newChord;
-state.progressions.push({key:data[i].key,chords:newChords});
+}
+
+func SymbolIsInOptions(symbol){
+
 }
   console.log(JSON.stringify(state));
