@@ -6,10 +6,22 @@
       "symbol": "I",
       "notes": ["3C", "3G", "4E", "5C"]
     }, {
-      "symbol": "V6/4",
+      "symbol": "ii6/5",
       "notes": ["3D", "3G", "4D", "4B"]
     }, {
-      "symbol": "I6",
+      "symbol": "V7",
+      "notes": ["3D", "3G", "4D", "4B"]
+    }, {
+      "symbol": "vi",
+      "notes": ["3D", "3G", "4D", "4B"]
+    }, {
+      "symbol": "ii7",
+      "notes": ["3D", "3G", "4D", "4B"]
+    }, {
+      "symbol": "V7",
+      "notes": ["3D", "3G", "4D", "4B"]
+    }, {
+      "symbol": "I",
       "notes": ["3E", "3G", "4C", "5C"]
     }]
   }, {
