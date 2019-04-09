@@ -6,29 +6,32 @@ state.options = data.options;
 state.progressions = data.progressions;
 
 state.testResults = "Hello. "
+state.debuggingString = ""
 
 // checkTheWholeFile()
 
 // function checkTheWholeFile(){
   // index that keeps track of how many errors
-  var numberOfErrors = 0
+  state.numberOfErrors = 0
 // for every one of the items in .progressions
 for (i in data.progressions) {
   // loop in their .chords array
   var currentChords = i.chords;
   // for each item in .chords, check its "symbol" key
+  state.debuggingString+= currentChords
+  // WIP: currentChords is UNDEFINED!!! its not i.chords but is i = chords!!!
   for (each in currentChords) {
     // make sure that the "symbol" vaule exists in state.options
     var currentSymbol = each.symbol
-    if (SymbolIsInOptions(currentSymbol, state.options) = false) {
-      numberOfErrors ++;
+    if (SymbolIsInOptions(currentSymbol, state.options) == false) {
+      state.numberOfErrors ++;
       state.testResults += String("Inconsistency Found In the following Progression:"+String(i))
       console.log("Inconsistency Found In the following Progression:", i)
     }
   }
 }
 
-      state.testResults += (String("total error found:" + String(numberOfErrors)))
+      state.testResults += (String("total error found:" + String(state.numberOfErrors)))
       // console.log("total error found:", numberOfErrors)
       // console.log(JSON.stringify(state));
 
@@ -37,13 +40,16 @@ for (i in data.progressions) {
 // this function checks that "symbol" exists as a value in the optionsArray
 // return false if it cannot find the symbol among any value
 function SymbolIsInOptions(symbol, optionsArray) {
-  var IsInOptions = false
+  // var IsInOptions = false
   IsInOptions = optionsArray.includes(symbol)
-  return IsInOptions
+  return optionsArray.includes(symbol)
+  // return IsInOptions
 
 }
 
 console.log(JSON.stringify(state.testResults));
+console.log(JSON.stringify(state.debuggingString));
+// console.log(JSON.stringify(state.numberOfErrors));
 
 // To run this, type:
 // node checkProgressionForCoherency.js ../../data/505progressions-03.json >> testResults.json
