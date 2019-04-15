@@ -14,25 +14,25 @@ state.debuggingString = ""
   // index that keeps track of how many errors
   state.numberOfErrors = 0
 // for every one of the items in .progressions
-for (i in data.progressions) {
+for (i of data.progressions) {
   // loop in their .chords array
   var currentChords = i.chords;
   // for each item in .chords, check its "symbol" key
   state.debuggingString+= currentChords
   // WIP: currentChords is UNDEFINED!!! its not i.chords but is i = chords!!!
-  for (each in currentChords) {
+  for (each of currentChords) {
     // make sure that the "symbol" vaule exists in state.options
     var currentSymbol = each.symbol
     if (SymbolIsInOptions(currentSymbol, state.options) == false) {
       state.numberOfErrors ++;
-      state.testResults += String("Inconsistency Found In the following Progression:"+String(i))
-      console.log("Inconsistency Found In the following Progression:", i)
+      state.testResults += String("Inconsistency Found In the following Progression:"+JSON.stringify(i))
+      console.log("Inconsistency Found In the following Progression:", JSON.stringify(i))
     }
   }
 }
 
-      state.testResults += (String("total error found:" + String(state.numberOfErrors)))
-      // console.log("total error found:", numberOfErrors)
+      // state.testResults += (String("total error found:" + String(state.numberOfErrors)))
+      console.log("total error found:", state.numberOfErrors)
       // console.log(JSON.stringify(state));
 
 // }
@@ -47,8 +47,8 @@ function SymbolIsInOptions(symbol, optionsArray) {
 
 }
 
-console.log(JSON.stringify(state.testResults));
-console.log(JSON.stringify(state.debuggingString));
+// console.log(JSON.stringify(state.testResults));
+// console.log(JSON.stringify(state.debuggingString));
 // console.log(JSON.stringify(state.numberOfErrors));
 
 // To run this, type:
