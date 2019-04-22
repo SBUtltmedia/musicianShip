@@ -300,6 +300,8 @@ function loadProgressionUnit(unitNum) {
 
     // FOR REGULAR PROGRESSIONS
     if (stateContainer.progressionType == "progressions") {
+      // generate options based from the data
+      generateOptionsFromTheData();
       // pick a random Progression
       // this function generates the index for a random progression
       stateContainer.data.progressionIndex = Math.floor(Math.random() * stateContainer.data.progressions.length);
@@ -315,6 +317,33 @@ function loadProgressionUnit(unitNum) {
       //   // console.log("pushing X")
       // }
       console.log("state.storedAnswer: ", stateContainer.data.storedAnswer)
+
+function generateOptionsFromTheData() {
+    // let stateContainer.data.optionsSet = new Set;
+    let optionsSet = new Set;
+      for (i of stateContainer.data.progressions) {
+        // loop in their .chords array
+        var currentChords = i.chords;
+        // for each item in .chords, check its "symbol" key
+        for (each of currentChords) {
+          // make sure that the "symbol" vaule exists in state.options
+          var currentSymbol = each.symbol
+          // add currentSymbol to the set
+          // stateContainer.data.optionsSet.add(currentSymbol)
+          optionsSet.add(currentSymbol)
+        }
+let optionsOrder=new Set(["I", "i", "V6/4", "V4/3", "viio6/5", "I6", "i6", "IV", "IV7", "iv", "ii6", "ii6/5", "N6", "V4/2", "vii&oslash;4/3", "ii&oslash;6/5", "viio4/3", "I6/4", "i6/4", "V", "V7", "A6", "VI", "VI7", "vi", "vi7", "V6", "V6/5", "viio7"])
+// let optionsOrder=["I", "i", "V6/4", "V4/3", "viio6/5", "I6", "i6", "IV", "IV7", "iv", "ii6", "ii6/5", "N6", "V4/2", "vii&oslash;4/3", "ii&oslash;6/5", "viio4/3", "I6/4", "i6/4", "V", "V7", "A6", "VI", "VI7", "vi", "vi7", "V6", "V6/5", "viio7"]
+let calculatedOptions = [...optionsOrder].filter(x=>optionsSet.has(x))
+console.log("final options", [...optionsOrder].filter(x=>optionsSet.has(x)))
+        // console.log("set is:", optionsSet)
+        // console.log("set is:", stateContainer.data.optionsSet)
+        // convert the set into an array accordig to a certain order
+        stateContainer.data.options = calculatedOptions
+      }
+    }
+
+
 
 
     }
