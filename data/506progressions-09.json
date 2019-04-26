@@ -30,16 +30,16 @@
       "notes": ["2F", "3F", "4C", "4A"]
     }, {
       "symbol": "vi",
-      "notes": ["3F", "4D", "4G", "4B"]
+      "notes": ["3D", "4D", "4G", "4B"]
     }, {
       "symbol": "IV7",
-      "notes": ["3E", "4C", "4G", "5C"]
+      "notes": ["2Bb", "4C", "4G", "5C"]
     }, {
       "symbol": "V7",
-      "notes": ["3E", "4C", "4G", "5C"]
+      "notes": ["3C", "4C", "4G", "5C"]
     }, {
       "symbol": "I",
-      "notes": ["3E", "4C", "4G", "5C"]
+      "notes": ["2F", "4C", "4G", "5C"]
     }]
   }, {
     "key": "C",
