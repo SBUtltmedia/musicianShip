@@ -1,5 +1,4 @@
 {
-  "options": ["I", "i", "V4/3", "viio6/5", "ii7", "I6", "i6", "IV", "IV7", "iv", "iv7", "ii6", "ii6/5", "N6", "V4/2", "vii&oslash;4/3", "ii&oslash;6/5", "viio4/3", "I6/4", "i6/4", "V", "V7", "A6", "VI", "VI7", "vi", "vi7", "V6", "V6/5", "viio7"],
   "progressions": [{
     "key": "C",
     "chords": [{
@@ -25,15 +24,21 @@
       "notes": ["3E", "3G", "4C", "5C"]
     }]
   }, {
-    "key": "C",
+    "key": "F",
     "chords": [{
       "symbol": "I",
-      "notes": ["3C", "4E", "4G", "5C"]
+      "notes": ["2F", "4E", "4G", "5C"]
     }, {
-      "symbol": "V4/2",
+      "symbol": "vi",
       "notes": ["3F", "4D", "4G", "4B"]
     }, {
-      "symbol": "I6",
+      "symbol": "IV7",
+      "notes": ["3E", "4C", "4G", "5C"]
+    }, {
+      "symbol": "V7",
+      "notes": ["3E", "4C", "4G", "5C"]
+    }, {
+      "symbol": "I",
       "notes": ["3E", "4C", "4G", "5C"]
     }]
   }, {
