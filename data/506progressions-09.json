@@ -27,7 +27,7 @@
     "key": "F",
     "chords": [{
       "symbol": "I",
-      "notes": ["2F", "4E", "4G", "5C"]
+      "notes": ["2F", "3F", "4C", "4A"]
     }, {
       "symbol": "vi",
       "notes": ["3F", "4D", "4G", "4B"]
