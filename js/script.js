@@ -115,7 +115,7 @@ function loadMenuUI() {
   ]
   var ProgressionUnits506 = [{
     "unit_nb": 09,
-    "desc": 'ii7, IV7, vi7 in Major and Minor Keys (Under Constrution)'
+    "desc": 'ii7, IV7, vi7 in Major and Minor Keys (Under Construction)'
     }, {
       "unit_nb": 10,
       "desc": 'Distinguishing V7, V6/5, V4/3 and vii&oslash;7, vii&oslash;6/5, vii&oslash;4/3'
