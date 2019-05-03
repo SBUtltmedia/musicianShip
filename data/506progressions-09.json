@@ -30,19 +30,19 @@
       "notes": ["2F", "3F", "4C", "4A"]
     }, {
       "symbol": "vi",
-      "notes": ["3D", "4D", "4G", "4B"]
+      "notes": ["3D", "3F", "4D", "4A"]
     }, {
       "symbol": "IV7",
-      "notes": ["2Bb", "4C", "4G", "5C"]
+      "notes": ["2Bb", "3F", "4D", "4A"]
     }, {
       "symbol": "V7",
-      "notes": ["3C", "4C", "4G", "5C"]
+      "notes": ["3C", "3E", "3Bb", "4G"]
     }, {
       "symbol": "I",
-      "notes": ["2F", "4C", "4G", "5C"]
+      "notes": ["2F", "3F", "3A", "4F"]
     }]
   }, {
-    "key": "C",
+    "key": "G",
     "chords": [{
       "symbol": "I",
       "notes": ["3C", "3G", "4E", "5C"]

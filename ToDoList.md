@@ -1,7 +1,7 @@
 # To-Do List for the MusicianShip App
 
 - [ ] Re-comment and clarify the whole code
-- [ ] make answer box vertical!
+- [x] make answer box vertical!
 - [x] Mention Perry as owner of the material
 - [x] Re-vamp Loading Screen
 - [x] Re-vamp Welcome Screen
