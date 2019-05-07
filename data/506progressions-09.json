@@ -45,21 +45,21 @@
     "key": "G",
     "chords": [{
       "symbol": "I",
-      "notes": ["3C", "3G", "4E", "5C"]
+      "notes": ["2G", "3G", "4D", "4B"]
     }, {
-      "symbol": "V6/5",
+      "symbol": "IV7",
       "notes": ["2B", "3G", "4F", "5D"]
     }, {
-      "symbol": "I",
+      "symbol": "ii6",
+      "notes": ["3C", "3G", "4E", "5C"]
+    }, {
+      "symbol": "V",
       "notes": ["3C", "3G", "4E", "5C"]
     }, {
       "symbol": "I",
       "notes": ["3C", "3G", "4E", "5C"]
     }, {
-      "symbol": "I",
-      "notes": ["3C", "3G", "4E", "5C"]
-    }, {
-      "symbol": "I",
+      "symbol": "IV",
       "notes": ["3C", "3G", "4E", "5C"]
     }, {
       "symbol": "I",
