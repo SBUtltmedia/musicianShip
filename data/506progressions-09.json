@@ -90,40 +90,28 @@
         "notes": ["2G", "3B", "4D", "4G"]
       }]
   }, {
-    "key": "e",
+    "key": "Eb",
     "chords": [{
-      "symbol": "i",
-      "notes": ["3E", "3B", "4E", "4G"]
+      "symbol": "I",
+      "notes": ["3Eb", "3Bb", "4Eb", "4G"]
+    }, {
+      "symbol": "vi7",
+      "notes": ["3C", "3Bb", "4Eb", "4G"]
+    }, {
+      "symbol": "ii6/5",
+      "notes": ["2Ab", "4C", "4Eb", "4F"]
     }, {
       "symbol": "V",
-      "notes": ["2B", "3B", "4Eb", "4Gb"]
+      "notes": ["2Bb", "3Bb", "4D", "4F"]
     }, {
-      "symbol": "i",
-      "notes": ["3E", "3G", "3B", "4E"]
-    }]
-  }, {
-    "key": "e",
-    "chords": [{
-      "symbol": "i",
-      "notes": ["3E", "3B", "4E", "4G"]
+      "symbol": "I",
+      "notes": ["3Eb", "3Bb", "4Eb", "4G"]
     }, {
-      "symbol": "V6/5",
-      "notes": ["3Eb", "3A", "3B", "4Gb"]
+      "symbol": "V7",
+      "notes": ["2Bb", "3Ab", "4D", "4F"]
     }, {
-      "symbol": "i",
-      "notes": ["3E", "3G", "3B", "4E"]
-    }]
-  }, {
-    "key": "e",
-    "chords": [{
-      "symbol": "i",
-      "notes": ["3E", "3B", "4E", "4G"]
-    }, {
-      "symbol": "V6/4",
-      "notes": ["3Gb", "3B", "4Eb", "4Gb"]
-    }, {
-      "symbol": "i6",
-      "notes": ["3G", "3B", "4E"]
+      "symbol": "I",
+      "notes": ["3Eb", "3G", "3Bb", "4Eb"]
     }]
   }, {
     "key": "D",
