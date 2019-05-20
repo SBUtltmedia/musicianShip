@@ -1,6 +1,7 @@
 # To-Do List for the MusicianShip App
 
 - [ ] Re-comment and clarify the whole code
+- [ ] Add aleksfadini as collaborator
 - [x] make answer box vertical!
 - [x] Mention Perry as owner of the material
 - [x] Re-vamp Loading Screen
