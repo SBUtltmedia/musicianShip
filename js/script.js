@@ -425,10 +425,19 @@ answerPicked(  $(this).parent().index(), $(this).index())
           $(this).addClass("btnClicked")
     })
 
+$('.modulationSelect').on("change",function (evt) {
+ var cur_row= $(this).attr("id").split("_")[1]
+ var buttonEl= $(this).parent().find('.btnClicked')
+ var cur_col=(buttonEl.index())
+answerPicked(cur_row,cur_col)
+buttonEl.addClass("btnClicked")
+})
+
 function answerPicked(row,column){
+  console.log("r,c",row,column)
 
     // Toggle highlight off from all other buttons in the row
-    $('#rows div:nth-child(' + (row + 1) + ')' + 'div div').removeClass("btnClicked")
+    $(`#rows div:nth-child(${row + 1}) div div`).removeClass("btnClicked")
     // Highlight the button when click
 
     // update the storedAnswer, which is what the user is selecting as progression
@@ -436,10 +445,15 @@ function answerPicked(row,column){
     // update storedAnswer with row number as first number and chordSymbol as second argument
 
 
-      var chordSymb = stateContainer.data.options[column]
-console.log($(`#modulationRow_${row}`))
-
+      var modulationPicked = $(`#modulationRow_${row}`).val()
+console.log($(`#modulationRow_${row}`).val())
     // var chordSymb = stateContainer.data.options[$(this).index()]
+      var chordSymb = stateContainer.data.options[column]
+      chordSymb.concat("checkconcat")
+    if (!(modulationPicked == "none") || (modulationPicked == -1 )) {
+      chordSymb.concat("try")
+    }
+
     updateAnswer(row, chordSymb)
 }
 
