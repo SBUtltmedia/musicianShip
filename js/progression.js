@@ -68,11 +68,11 @@ function makeProgressionUI() {
     class: "bg-square"
 
   });
-  // create columns
-  var columns = $("<div/>", {
-    id: "columns"
+  // create rows
+  var rows = $("<div/>", {
+    id: "rows"
   });
-  columns.addClass("bg-square")
+  rows.addClass("bg-square")
  var loopLength;
   // FOR REGULAR PROGRESSIONS
 
@@ -80,7 +80,7 @@ function makeProgressionUI() {
   if (stateContainer.progressionType == "progressions") {
 
     loopLength= stateContainer.data.progressions[stateContainer.data.progressionIndex].chords.length
-    //var column=createOptions(state.options)
+    //var row=createOptions(state.options)
 
   }
   // FOR TRIAD PROGRESSIONS
@@ -91,21 +91,21 @@ function makeProgressionUI() {
   }
   for (var i = 0; i <  loopLength ; i++) {
     var modulation =stateContainer.data.progressions[stateContainer.data.progressionIndex].chords[i].modulation||null;
-    columns.append(createOptions(stateContainer.data.options,modulation))
+    rows.append(createOptions(stateContainer.data.options,modulation))
   }
 
 
-  $('#stage').append([titleSection, topMenu, answerbox, columns])
+  $('#stage').append([titleSection, topMenu, answerbox, rows])
 
 }
 
 
 function createOptions(options,modulation) {
       console.log(modulation)
-  var optionsColumn = $("<div/>")
+  var optionsRow = $("<div/>")
   for (i of options) {
 
-    optionsColumn.append(
+    optionsRow.append(
       $("<div/>", {
         class: i
       }).append($('<p/>', {
@@ -114,7 +114,7 @@ function createOptions(options,modulation) {
     )
   }
 if(modulation){
-optionsColumn.append(
+optionsRow.append(
   $("<div/>", {
     class: i
   }).append($('<p/>', {
@@ -125,7 +125,7 @@ optionsColumn.append(
 
 }
 
-  return optionsColumn
+  return optionsRow
 }
 
 
@@ -189,11 +189,11 @@ function playSelectedProgression(evt) {
 
 
 
-  // Play the progression and highlight the column
-  playProgressionAndHighlightColumn(stateContainer.RandProgChordsArray).then(
+  // Play the progression and highlight the row
+  playProgressionAndHighlightRow(stateContainer.RandProgChordsArray).then(
     function() {
-      // Remove highlight from all columns
-      $('#columns div div').removeClass("btnHighlighted")
+      // Remove highlight from all rows
+      $('#rows div div').removeClass("btnHighlighted")
       // untoggle play progression
       $("#playBtn").removeClass("btnClicked")
       // Remove "already playing" from Bass Boost
@@ -208,8 +208,8 @@ function playSelectedProgression(evt) {
 
 }
 
-// Play a progression of chords and highlight the correspondant column
-function playProgressionAndHighlightColumn(arrayOfChords, durationOfEachChord = 1500, bassBoost = stateContainer.enhanceBass, silenceBetweenChords = 1500) {
+// Play a progression of chords and highlight the correspondant row
+function playProgressionAndHighlightRow(arrayOfChords, durationOfEachChord = 1500, bassBoost = stateContainer.enhanceBass, silenceBetweenChords = 1500) {
   var dfd = $.Deferred();
 
   // initialize StopPlayback flag
@@ -217,11 +217,11 @@ function playProgressionAndHighlightColumn(arrayOfChords, durationOfEachChord = 
 
   function iterate(chordNum) {
 	if(stateContainer.playing && (chordNum==0|| chordNum== stateContainer.previousChord+1)){
-    // Remove highlight from all columns
-    $('#columns div div').removeClass("btnHighlighted")
-    // Highlight the column indexed with number chordNum + 1
-    $('#columns div:nth-child(' + (chordNum + 1) + ')' + 'div div').addClass("btnHighlighted")
-    // Play the Chord corresponding to the column
+    // Remove highlight from all rows
+    $('#rows div div').removeClass("btnHighlighted")
+    // Highlight the row indexed with number chordNum + 1
+    $('#rows div:nth-child(' + (chordNum + 1) + ')' + 'div div').addClass("btnHighlighted")
+    // Play the Chord corresponding to the row
     stateContainer.soundChannels.push(playChord(arrayOfChords[chordNum], durationOfEachChord, bassBoost))
 
 
@@ -259,8 +259,8 @@ var poppedChannel = stateContainer.soundChannels.pop();
 poppedChannel.off("fade")
 sound.stop(poppedChannel);
 }
-  // Remove highlight from all columns
-  $('#columns div div').removeClass("btnHighlighted")
+  // Remove highlight from all rows
+  $('#rows div div').removeClass("btnHighlighted")
   // Object.keys(howlerList).forEach(function(key) {
   //   howlerList[key].stop();
   // });

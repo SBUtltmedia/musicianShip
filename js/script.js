@@ -299,7 +299,7 @@ function loadProgressionUnit(unitNum) {
 
   function start() {
     // clear the inside
-    var totalColumns;
+    var totalRows;
 
     // FOR REGULAR PROGRESSIONS
     if (stateContainer.progressionType == "progressions") {
@@ -312,7 +312,7 @@ function loadProgressionUnit(unitNum) {
 
 
       // initialize user answer Array
-      totalColumns= stateContainer.data.progressions[stateContainer.data.progressionIndex].chords.length
+      totalRows= stateContainer.data.progressions[stateContainer.data.progressionIndex].chords.length
 
       // fill the array storedAnswer with dummy elements "X"
       // for (var i = 0, l = state.progressions[state.progressionIndex].chords.length; i < (l-1); ++i) {
@@ -376,7 +376,7 @@ console.log("final options", [...optionsOrder].filter(x=>optionsSet.has(x)))
       // prints selected prog chord
       console.log("selected prog: ", stateContainer.data.triads)
       // initialize user answer Array
-      totalColumns= stateContainer.triadColNumb;
+      totalRows= stateContainer.triadColNumb;
       // fill the array storedAnswer with dummy elements "X"
       // for (var i = 0, l = state.progressions[state.progressionIndex].chords.length; i < (l-1); ++i) {
       // state.storedAnswer.push(" X")
@@ -393,10 +393,10 @@ console.log("final options", [...optionsOrder].filter(x=>optionsSet.has(x)))
     stateContainer.data.check = false
     // make Progression Interface
     makeProgressionUI()
-    stateContainer.data.storedAnswer = new Array(totalColumns).fill(" ")
+    stateContainer.data.storedAnswer = new Array(totalRows).fill(" ")
     stateContainer.data.storedAnswer.forEach((item)=>{
 
-console.log(totalColumns)
+console.log(totalRows)
 
 
     $('#answerBox').append($('<div/>',{class:"answerBoxItem"}))
@@ -415,24 +415,24 @@ console.log(totalColumns)
 
 
     // color each button gray.
-    $("#columns div div").addClass("btnReady")
-    // When user clicks on a button (columns div div), call is correct)
-    $('#columns div div').on("click", function(evt) {
+    $("#rows div div").addClass("btnReady")
+    // When user clicks on a button (rows div div), call is correct)
+    $('#rows div div').on("click", function(evt) {
       stateContainer.clickeditem = [$(this).index(), $(this).parent().index()]
-      // Toggle highlight off from all other buttons in the column
-      $('#columns div:nth-child(' + ($(this).parent().index() + 1) + ')' + 'div div').removeClass("btnClicked")
+      // Toggle highlight off from all other buttons in the row
+      $('#rows div:nth-child(' + ($(this).parent().index() + 1) + ')' + 'div div').removeClass("btnClicked")
       // Highlight the button when click
       $(this).addClass("btnClicked")
       // update the storedAnswer, which is what the user is selecting as progression
 
-      // update storedAnswer with column number as first number and chordSymbol as second argument
-      var columnNumb = $(this).parent().index()
+      // update storedAnswer with row number as first number and chordSymbol as second argument
+      var rowNumb = $(this).parent().index()
 
         var chordSymb = stateContainer.data.options[$(this).index()]
 
 
       // var chordSymb = stateContainer.data.options[$(this).index()]
-      updateAnswer(columnNumb, chordSymb)
+      updateAnswer(rowNumb, chordSymb)
       // Log message about answer being correct
       // console.log(stateContainer.data.clickeditem, isCorrect())
     })
@@ -460,11 +460,11 @@ console.log(totalColumns)
 
 
   // This function updates the StoredAnswer var inside of the global "state" var,
-  // Stored Answer is a dictionnary that for every column keeps track
-  // of the last chord symbol indicated by the user when clicking on an element of the column
-  function updateAnswer(columnNumber, chordSymbol) {
-    // substitute item at position "column" in an array, with item "chordSymbol"
-    stateContainer.data.storedAnswer[columnNumber] = chordSymbol
+  // Stored Answer is a dictionnary that for every row keeps track
+  // of the last chord symbol indicated by the user when clicking on an element of the row
+  function updateAnswer(rowNumber, chordSymbol) {
+    // substitute item at position "row" in an array, with item "chordSymbol"
+    stateContainer.data.storedAnswer[rowNumber] = chordSymbol
     console.log("state.storedAnswer", stateContainer.data.storedAnswer)
     //   color = "green"
 

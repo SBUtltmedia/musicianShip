@@ -60,7 +60,7 @@ p {
   /* text-transform: uppercase; */
 }
 
-/* #columns div div { */
+/* #rows div div { */
 .bg-square div div {
   /* background-color: #787582; */
   border-radius: 0.3rem;
@@ -138,11 +138,11 @@ p {
 #title div {
   text-align: right;
 } */
-#columns {
+#rows {
   display: flex;
   padding: 1rem;
 }
 
-#columns>div {
+#rows>div {
   flex: 1;
 }

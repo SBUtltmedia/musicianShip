@@ -268,25 +268,25 @@ p {
 #title div {
   text-align: right;
 } */
-#columns, #columns>div{
+#rows, #rows>div{
   display: flex;
 
 }
-#columns
+#rows
 {
 
   flex-direction:column ;
   padding: 1rem;
 }
 
-#columns>div{
+#rows>div{
   padding: 0.5rem;
   flex-direction:row ;
 
 }
 
 
-/* #columns>div {
+/* #rows>div {
   flex: 1;
 } */
 
