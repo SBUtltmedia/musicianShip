@@ -418,24 +418,30 @@ console.log(totalRows)
     $("#rows div div").addClass("btnReady")
     // When user clicks on a button (rows div div), call is correct)
     $('#rows div div').on("click", function(evt) {
-      stateContainer.clickeditem = [$(this).index(), $(this).parent().index()]
-      // Toggle highlight off from all other buttons in the row
-      $('#rows div:nth-child(' + ($(this).parent().index() + 1) + ')' + 'div div').removeClass("btnClicked")
-      // Highlight the button when click
-      $(this).addClass("btnClicked")
-      // update the storedAnswer, which is what the user is selecting as progression
 
-      // update storedAnswer with row number as first number and chordSymbol as second argument
-      var rowNumb = $(this).parent().index()
-
-        var chordSymb = stateContainer.data.options[$(this).index()]
-
-
-      // var chordSymb = stateContainer.data.options[$(this).index()]
-      updateAnswer(rowNumb, chordSymb)
+answerPicked(  $(this).parent().index(), $(this).index())
       // Log message about answer being correct
       // console.log(stateContainer.data.clickeditem, isCorrect())
+          $(this).addClass("btnClicked")
     })
+
+function answerPicked(row,column){
+
+    // Toggle highlight off from all other buttons in the row
+    $('#rows div:nth-child(' + (row + 1) + ')' + 'div div').removeClass("btnClicked")
+    // Highlight the button when click
+
+    // update the storedAnswer, which is what the user is selecting as progression
+
+    // update storedAnswer with row number as first number and chordSymbol as second argument
+
+
+      var chordSymb = stateContainer.data.options[column]
+console.log($(`#modulationRow_${row}`))
+
+    // var chordSymb = stateContainer.data.options[$(this).index()]
+    updateAnswer(row, chordSymb)
+}
 
     // function isCorrect() {
     //   return state.progressions[state.progressionIndex].chords[state.clickeditem[1]].symbol == state.options[state.clickeditem[0]]

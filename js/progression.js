@@ -1,4 +1,6 @@
 function makeProgressionUI() {
+
+  stateContainer.modulationOptions = ["none","I","II","III","IV","V","vi"]
   // Initialize bass status
   stateContainer.enhanceBass = false
   // Initialize playing status
@@ -76,8 +78,15 @@ function makeProgressionUI() {
  var loopLength;
   // FOR REGULAR PROGRESSIONS
 
+var chordModulationValue;
 
   if (stateContainer.progressionType == "progressions") {
+
+if(stateContainer.data.progressions[stateContainer.data.progressionIndex].chords.find(chord=> chord.modulation)){
+chordModulationValue="none";
+
+}
+
 
     loopLength= stateContainer.data.progressions[stateContainer.data.progressionIndex].chords.length
     //var row=createOptions(state.options)
@@ -90,8 +99,22 @@ function makeProgressionUI() {
 
   }
   for (var i = 0; i <  loopLength ; i++) {
-    var modulation =stateContainer.data.progressions[stateContainer.data.progressionIndex].chords[i].modulation||null;
+    var modulation =stateContainer.data.progressions[stateContainer.data.progressionIndex].chords[i].modulation||chordModulationValue||null;
     rows.append(createOptions(stateContainer.data.options,modulation))
+
+    if(modulation){
+      var sel = $('<select>');
+    $(stateContainer.modulationOptions).each(function() {
+     sel.append($("<option>",{id:`modulationRow_${i}`,class:"modulationSelect"}).attr('value',this).text(this));
+    });
+
+    rows.append(sel)
+
+
+    }
+
+
+
   }
 
 
@@ -103,27 +126,17 @@ function makeProgressionUI() {
 function createOptions(options,modulation) {
       console.log(modulation)
   var optionsRow = $("<div/>")
-  for (i of options) {
+  for (i in options) {
 
     optionsRow.append(
       $("<div/>", {
-        class: i
+        class: options[i]
       }).append($('<p/>', {
-        html: i
+        html: options[i]
       }))
     )
   }
-if(modulation){
-optionsRow.append(
-  $("<div/>", {
-    class: i
-  }).append($('<p/>', {
-    html: i
-  }))
-);
 
-
-}
 
   return optionsRow
 }
