@@ -79,7 +79,7 @@ function makeProgressionUI() {
   // FOR REGULAR PROGRESSIONS
 
 var chordModulationValue;
-
+// var modulation
   if (stateContainer.progressionType == "progressions") {
 
 if(stateContainer.data.progressions[stateContainer.data.progressionIndex].chords.find(chord=> chord.modulation)){
@@ -94,21 +94,22 @@ chordModulationValue="none";
   }
   // FOR TRIAD PROGRESSIONS
   if (stateContainer.progressionType == "triads") {
-
+    // modulation = null
   loopLength= stateContainer.triadColNumb;
 
   }
   for (var i = 0; i <  loopLength ; i++) {
-    var modulation =stateContainer.data.progressions[stateContainer.data.progressionIndex].chords[i].modulation||chordModulationValue||null;
+
+    var modulation=(stateContainer.data.progressions.length&&stateContainer.data.progressions[stateContainer.data.progressionIndex].chords[i].modulation)||chordModulationValue||null;
     rows.append(createOptions(stateContainer.data.options,modulation))
 
     if(modulation){
-      var sel = $('<select>');
+      var sel = $('<select>',{id:`modulationRow_${i}`,class:"modulationSelect"});
     $(stateContainer.modulationOptions).each(function() {
-     sel.append($("<option>",{id:`modulationRow_${i}`,class:"modulationSelect"}).attr('value',this).text(this));
+     sel.append($("<option>").attr('value',this).text(this));
     });
 
-    rows.append(sel)
+    rows.children().eq(i).append(sel)
 
 
     }
