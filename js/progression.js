@@ -73,42 +73,58 @@ function makeProgressionUI() {
     id: "columns"
   });
   columns.addClass("bg-square")
-
+ var loopLength;
   // FOR REGULAR PROGRESSIONS
+
+
   if (stateContainer.progressionType == "progressions") {
-    //
+
+    loopLength= stateContainer.data.progressions[stateContainer.data.progressionIndex].chords.length
     //var column=createOptions(state.options)
-    for (i of stateContainer.data.progressions[stateContainer.data.progressionIndex].chords) {
-      columns.append(createOptions(stateContainer.data.options))
-    }
 
   }
   // FOR TRIAD PROGRESSIONS
   if (stateContainer.progressionType == "triads") {
 
-    for (var i = 0; i < stateContainer.triadColNumb; i++) {
-      columns.append(createOptions(stateContainer.data.options))
-    }
-
+  loopLength= stateContainer.triadColNumb;
 
   }
+  for (var i = 0; i <  loopLength ; i++) {
+    var modulation =stateContainer.data.progressions[stateContainer.data.progressionIndex].chords[i].modulation||null;
+    columns.append(createOptions(stateContainer.data.options,modulation))
+  }
+
 
   $('#stage').append([titleSection, topMenu, answerbox, columns])
 
 }
 
 
-function createOptions(options) {
+function createOptions(options,modulation) {
+      console.log(modulation)
   var optionsColumn = $("<div/>")
-  for (i in options) {
+  for (i of options) {
+
     optionsColumn.append(
       $("<div/>", {
-        class: options[i]
+        class: i
       }).append($('<p/>', {
-        html: options[i]
+        html: i
       }))
     )
   }
+if(modulation){
+optionsColumn.append(
+  $("<div/>", {
+    class: i
+  }).append($('<p/>', {
+    html: i
+  }))
+);
+
+
+}
+
   return optionsColumn
 }
 
