@@ -6,6 +6,12 @@
             "symbol": "I",
             "notes": ["3F", "4C", "4F", "4A"]
         }, {
+            "symbol": "vii&oslash;7",
+            "notes": ["3E", "4D", "4G", "4Bb"]
+        }, {
+            "symbol": "I",
+            "notes": ["3F", "4C", "4F", "4A"]
+        }, {
             "symbol": "V7",
             "modulation": "vi",
             "notes": ["2A", "3G", "4Db", "4E"]
