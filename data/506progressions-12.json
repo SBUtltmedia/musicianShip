@@ -20,7 +20,15 @@
         }, {
             "symbol": "V7",
             "modulation": "vi",
-            "notes": ["2A", "3G", "4Db", "4E"]
+            "notes": ["2A", "3G", "4Db", "4G"]
+        }, {
+            "symbol": "i",
+            "modulation": "vi",
+            "notes": ["2A", "3G", "4Db", "4G"]
+        }, {
+            "symbol": "ii6",
+            "modulation": "vi",
+            "notes": ["2A", "3G", "4Db", "4G"]
         }, {
             "symbol": "V7",
             "modulation": "vi",

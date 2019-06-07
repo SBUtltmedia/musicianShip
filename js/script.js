@@ -121,7 +121,7 @@ function loadMenuUI() {
       "desc": 'Distinguishing V7, V6/5, V4/3 and vii&oslash;7, vii&oslash;6/5, vii&oslash;4/3'
     }, {
       "unit_nb": 12,
-      "desc": 'Distinguishing V7, V6/5, V4/3 and vii&oslash;7, vii&oslash;6/5, vii&oslash;4/3'
+      "desc": 'Modulations - Under Construction'
   }
   ]
   // Define progression units
@@ -422,6 +422,7 @@ console.log(totalRows)
 answerPicked(  $(this).parent().index(), $(this).index())
       // Log message about answer being correct
       // console.log(stateContainer.data.clickeditem, isCorrect())
+      $('#rows div:nth-child(' + ($(this).parent().index() + 1) + ')' + 'div div').removeClass("btnClicked")
           $(this).addClass("btnClicked")
     })
 
